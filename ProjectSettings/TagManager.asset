@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Block
+  - Spike
+  - Checkpoint
+  - BounceUp
+  - BounceRight
+  - BounceLeft
+  - Slide
+  - Coin
+  - Hold
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - Ground
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Sky
+    uniqueID: 3554745853
+    locked: 0
+  - name: Background
+    uniqueID: 197285267
+    locked: 0
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Back
+    uniqueID: 505854973
+    locked: 0
+  - name: Middle
+    uniqueID: 2893067277
+    locked: 0
+  - name: Player
+    uniqueID: 2519656833
+    locked: 0
+  - name: Front
+    uniqueID: 2864846911
+    locked: 0
