@@ -41,6 +41,7 @@ public class PlayerRevive : MonoBehaviour
     {
         //if ad has been watched
         //Revive method logic needs to be triggered from rewarded video script
+        //This is just a comment test for git and changes
     }
 
     public void Revive()
