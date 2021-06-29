@@ -2668,6 +2668,7 @@ MonoBehaviour:
   revivePoint: {fileID: 1003992708}
   levelManager: {fileID: 1392825940}
   isRevived: 0
+  isReviving: 0
 --- !u!1001 &300957778
 PrefabInstance:
   m_ObjectHideFlags: 0
