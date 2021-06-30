@@ -11,7 +11,17 @@ public class PlayerRespawn : MonoBehaviour
     public bool isrevivable;
     public PlayerRevive revive;
 
-    public GameObject[] revivePoints;
+    public void CheckRevive()
+    {
+        if (revive.isRevived)
+        {
+            Respawn();
+        }
+        else
+        {
+            revive.ShowReviveUI();
+        }
+    }
 
     public void Respawn()
     {
@@ -22,17 +32,13 @@ public class PlayerRespawn : MonoBehaviour
     {
         yield return new WaitForSeconds(0.75f);
         player.gameObject.SetActive(false);
-        isrevivable = true;
+        CheckRevive();
         yield return new WaitForSeconds(2f);
-        isrevivable = false;
-        if (!revive.isReviving)
-        {
-            player.transform.position = respawnPoint.transform.position;
-            player.isDead = false;
-            player.isStop = true;
-            yield return new WaitForSeconds(1.0f);
-            player.gameObject.SetActive(true);
-            revive.isRevived = false;
-        }
+        player.transform.position = respawnPoint.transform.position;
+        player.isDead = false;
+        player.isStop = true;
+        yield return new WaitForSeconds(1.0f);
+        player.gameObject.SetActive(true);
+        revive.isRevived = false;
     }
 }

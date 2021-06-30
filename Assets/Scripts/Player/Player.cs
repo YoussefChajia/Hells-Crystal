@@ -76,7 +76,7 @@ public class Player : MonoBehaviour
         {
             tutorial.UI[2].gameObject.SetActive(false);
             levels[0].gameObject.SetActive(true);
-            PlayerPrefs.SetInt("Tutorial", 0);
+            //PlayerPrefs.SetInt("Tutorial", 0);
         }
     }
 

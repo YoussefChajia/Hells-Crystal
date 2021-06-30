@@ -4,27 +4,18 @@ using UnityEngine.UI;
 
 public class PlayerRevive : MonoBehaviour
 {
-    [Header("Revive UI")]
     public Player player;
+
+    [Header("Revive UI")]
     public GameObject reviveUI;
     public Image uiCount;
-    private float waitTime = 2f;
-    public GameObject revivePoint;
+    //private float waitTime = 2f;
 
     [Header("Revive Mechanic")]
-    public PlayerRespawn levelManager;
     public bool isRevived;
-    public bool isReviving;
+    public GameObject revivePoint;
 
-    void Update()
-    {
-        if (levelManager.isrevivable && !isRevived)
-        {
-            AskPlayer();
-        }
-    }
-
-    public void AskPlayer()
+    /* public void ShowReviveUI()
     {
         reviveUI.SetActive(true);
         uiCount.fillAmount = Mathf.InverseLerp(0, 2f, waitTime);
@@ -35,29 +26,34 @@ public class PlayerRevive : MonoBehaviour
             reviveUI.SetActive(false);
             waitTime = 2f;
         }
+    } */
+
+    public void ShowReviveUI()
+    {
+        StartCoroutine("ShowUI");
     }
 
-    public void GetRevive()
+    public IEnumerator ShowUI()
     {
-        //if ad has been watched
-        //Revive method logic needs to be triggered from rewarded video script
+        reviveUI.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        reviveUI.SetActive(false);
     }
 
     public void Revive()
     {
-        isReviving = true;
+        reviveUI.SetActive(false);
         StartCoroutine("RevivePlayer");
     }
 
     public IEnumerator RevivePlayer()
     {
-        reviveUI.SetActive(false);
         player.transform.position = revivePoint.transform.position;
         player.isDead = false;
         player.isStop = true;
         yield return new WaitForSeconds(1.0f);
         player.gameObject.SetActive(true);
-        isReviving = false;
         isRevived = true;
     }
+
 }
