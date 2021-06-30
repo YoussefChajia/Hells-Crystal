@@ -2665,8 +2665,10 @@ MonoBehaviour:
   player: {fileID: 2023183554}
   reviveUI: {fileID: 1235728791}
   uiCount: {fileID: 11383129}
-  respawnPoint: {fileID: 1482355294}
   revivePoint: {fileID: 1003992708}
+  levelManager: {fileID: 1392825940}
+  isRevived: 0
+  isReviving: 0
 --- !u!1001 &300957778
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12910,6 +12912,9 @@ MonoBehaviour:
   player: {fileID: 2023183554}
   respawnPoint: {fileID: 1482355294}
   mainCamera: {fileID: 519420031}
+  isrevivable: 0
+  revive: {fileID: 292320628}
+  revivePoints: []
 --- !u!1001 &1398050918
 PrefabInstance:
   m_ObjectHideFlags: 0
