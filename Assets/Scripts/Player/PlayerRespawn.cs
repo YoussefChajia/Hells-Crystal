@@ -7,38 +7,38 @@ public class PlayerRespawn : MonoBehaviour
     public Player player;
     public GameObject respawnPoint;
     public Camera mainCamera;
-    [HideInInspector]
-    public bool isrevivable;
-    public PlayerRevive revive;
+
+    [Header("Revive Mechanic")]
+    public PlayerRevive playerRevive;
+    public bool isRevivable;
 
     public void CheckRevive()
     {
-        if (revive.isRevived)
+        if (!playerRevive.isRevived)
         {
-            Respawn();
+            isRevivable = true;
         }
         else
         {
-            revive.ShowReviveUI();
+            Respawn();
         }
     }
 
     public void Respawn()
     {
+        playerRevive.reviveUI.SetActive(false);
+        playerRevive.waitTime = 2f;
         StartCoroutine("RespawnPlayer");
     }
 
     public IEnumerator RespawnPlayer()
     {
-        yield return new WaitForSeconds(0.75f);
-        player.gameObject.SetActive(false);
-        CheckRevive();
-        yield return new WaitForSeconds(2f);
+        //yield return new WaitForSeconds(2f);
         player.transform.position = respawnPoint.transform.position;
         player.isDead = false;
         player.isStop = true;
         yield return new WaitForSeconds(1.0f);
         player.gameObject.SetActive(true);
-        revive.isRevived = false;
+        playerRevive.isRevived = false;
     }
 }

@@ -5,17 +5,28 @@ using UnityEngine.UI;
 public class PlayerRevive : MonoBehaviour
 {
     public Player player;
+    public PlayerRespawn levelManager;
 
     [Header("Revive UI")]
     public GameObject reviveUI;
     public Image uiCount;
-    //private float waitTime = 2f;
+    public Button revive;
+    public float waitTime = 2f;
 
     [Header("Revive Mechanic")]
+    [HideInInspector]
     public bool isRevived;
     public GameObject revivePoint;
 
-    /* public void ShowReviveUI()
+    private void Update()
+    {
+        if (levelManager.isRevivable)
+        {
+            ShowReviveUI();
+        }
+    }
+
+    public void ShowReviveUI()
     {
         reviveUI.SetActive(true);
         uiCount.fillAmount = Mathf.InverseLerp(0, 2f, waitTime);
@@ -23,31 +34,22 @@ public class PlayerRevive : MonoBehaviour
         if (waitTime <= 0)
         {
             waitTime = 0;
-            reviveUI.SetActive(false);
-            waitTime = 2f;
+            levelManager.isRevivable = false;
+            levelManager.Respawn();
         }
-    } */
-
-    public void ShowReviveUI()
-    {
-        StartCoroutine("ShowUI");
-    }
-
-    public IEnumerator ShowUI()
-    {
-        reviveUI.SetActive(true);
-        yield return new WaitForSeconds(2f);
-        reviveUI.SetActive(false);
     }
 
     public void Revive()
     {
+        levelManager.isRevivable = false;
         reviveUI.SetActive(false);
+        waitTime = 2f;
         StartCoroutine("RevivePlayer");
     }
 
     public IEnumerator RevivePlayer()
     {
+        //yield return new WaitForSeconds(2f);
         player.transform.position = revivePoint.transform.position;
         player.isDead = false;
         player.isStop = true;

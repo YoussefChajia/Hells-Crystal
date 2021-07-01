@@ -283,11 +283,6 @@ public class Player : MonoBehaviour
     {
         switch (other.gameObject.tag)
         {
-            case "Spike":
-                isDead = true;
-                animator.SetTrigger("isDead");
-                levelManager.Respawn();
-                break;
             case "BounceUp":
                 Bounce(0);
                 break;
