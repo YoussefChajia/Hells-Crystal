@@ -40,7 +40,7 @@ public class Player : MonoBehaviour
     private bool isSliding;
 
     [Header("Player Respawn")]
-    public PlayerRespawn levelManager;
+    public PlayerRespawn playerRespawn;
 
     [Header("Levels")]
     public GameObject[] levels;
@@ -283,6 +283,11 @@ public class Player : MonoBehaviour
     {
         switch (other.gameObject.tag)
         {
+            case "Spike":
+                isDead = true;
+                animator.SetTrigger("isDead");
+                playerRespawn.Death();
+                break;
             case "BounceUp":
                 Bounce(0);
                 break;
@@ -297,7 +302,7 @@ public class Player : MonoBehaviour
                 ResetSpike(tutSpike);
                 break;
             case "Checkpoint":
-                levelManager.respawnPoint.transform.position = new Vector2(-1.5f, other.transform.position.y + 1.5f);
+                playerRespawn.respawnPoint.transform.position = new Vector2(-1.5f, other.transform.position.y + 1.5f);
                 ActivateLevel(int.Parse(other.name));
                 break;
             case "Slide":

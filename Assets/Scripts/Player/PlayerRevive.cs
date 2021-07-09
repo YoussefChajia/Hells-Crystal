@@ -9,18 +9,22 @@ public class PlayerRevive : MonoBehaviour
 
     [Header("Revive UI")]
     public GameObject reviveUI;
-    public Image uiCount;
-    public Button revive;
-    public float waitTime = 2f;
+    [SerializeField] private Image uiCount;
+    [SerializeField] private Button revive;
+    [Range(0f, 3f)] public float startWaitTime;
+    [HideInInspector]
+    public float waitTime;
 
     [Header("Revive Mechanic")]
+    [SerializeField] private GameObject revivePoint;
     [HideInInspector]
     public bool isRevived;
-    public GameObject revivePoint;
+    [HideInInspector]
+    public bool isRevivable;
 
     private void Update()
     {
-        if (levelManager.isRevivable)
+        if (isRevivable)
         {
             ShowReviveUI();
         }
@@ -34,16 +38,15 @@ public class PlayerRevive : MonoBehaviour
         if (waitTime <= 0)
         {
             waitTime = 0;
-            levelManager.isRevivable = false;
+            isRevivable = false;
             levelManager.Respawn();
         }
     }
 
     public void Revive()
     {
-        levelManager.isRevivable = false;
+        isRevivable = false;
         reviveUI.SetActive(false);
-        waitTime = 2f;
         StartCoroutine("RevivePlayer");
     }
 

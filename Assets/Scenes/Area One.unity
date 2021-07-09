@@ -2630,7 +2630,7 @@ GameObject:
   - component: {fileID: 292320627}
   - component: {fileID: 292320628}
   m_Layer: 0
-  m_Name: Revive
+  m_Name: Player Revive
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2667,8 +2667,11 @@ MonoBehaviour:
   reviveUI: {fileID: 1235728791}
   uiCount: {fileID: 11383129}
   revive: {fileID: 664426731}
-  isRevived: 0
+  startWaitTime: 2
+  waitTime: 2
   revivePoint: {fileID: 1003992708}
+  isRevived: 0
+  isRevivable: 0
 --- !u!1001 &300957778
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12877,7 +12880,7 @@ GameObject:
   - component: {fileID: 1392825939}
   - component: {fileID: 1392825940}
   m_Layer: 0
-  m_Name: Manager
+  m_Name: Player Respawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12911,7 +12914,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 2023183554}
   respawnPoint: {fileID: 1482355294}
-  mainCamera: {fileID: 519420031}
   playerRevive: {fileID: 292320628}
 --- !u!1001 &1398050918
 PrefabInstance:
@@ -13473,7 +13475,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1482355295}
   m_Layer: 0
-  m_Name: Respawn
+  m_Name: Respawn Point
   m_TagString: Untagged
   m_Icon: {fileID: 8418204508859773708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -17890,7 +17892,6 @@ GameObject:
   - component: {fileID: 2023183553}
   - component: {fileID: 2023183555}
   - component: {fileID: 2023183556}
-  - component: {fileID: 2023183557}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -18053,11 +18054,12 @@ MonoBehaviour:
   startJumpTime: 0.2
   holdTime: 0.1
   isStop: 1
-  levelManager: {fileID: 1392825940}
+  playerRespawn: {fileID: 1392825940}
   levels:
   - {fileID: 1599366927}
   - {fileID: 1963208201}
   - {fileID: 1626399730}
+  - {fileID: 1152464832}
   activeLevel: {fileID: 0}
   animator: {fileID: 2023183555}
   trail: {fileID: 2023183556}
@@ -18189,20 +18191,6 @@ TrailRenderer:
   m_MinVertexDistance: 0
   m_Autodestruct: 0
   m_Emitting: 1
---- !u!114 &2023183557
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2023183548}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50ae4d29fe207db409fd8ff7a6cd32b8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 2023183554}
-  levelManager: {fileID: 1392825940}
 --- !u!4 &2055668015 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6881968665518717638, guid: cce30c8c3194c9a4f87c055a1b297f9e, type: 3}
