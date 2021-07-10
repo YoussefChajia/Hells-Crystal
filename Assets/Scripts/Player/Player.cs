@@ -42,9 +42,8 @@ public class Player : MonoBehaviour
     [Header("Player Respawn")]
     public PlayerRespawn playerRespawn;
 
-    [Header("Levels")]
-    public Level[] levels;
-    public Level activeLevel;
+    [Header("Level Manager")]
+    public LevelManager levelManager;
 
     [Header("Animator")]
     public Animator animator;
@@ -67,7 +66,7 @@ public class Player : MonoBehaviour
         tutorial.UI[3].SetActive(false);
 
         //Disabling all the levels, to activate them one at a time with the ActivateLevel method below
-        foreach (Level level in levels)
+        foreach (Level level in levelManager.levels)
         {
             level.gameObject.SetActive(false);
         }
@@ -75,8 +74,9 @@ public class Player : MonoBehaviour
         if (PlayerPrefs.GetInt("Tutorial", 0) == 1)
         {
             tutorial.UI[2].gameObject.SetActive(false);
-            levels[0].gameObject.SetActive(true);
-            levels[0].InitializeLevel();
+            levelManager.levels[0].gameObject.SetActive(true);
+            levelManager.activeLevel = levelManager.levels[0];
+            levelManager.activeLevel.InitializeLevel();
             //PlayerPrefs.SetInt("Tutorial", 0);
         }
     }
@@ -92,6 +92,7 @@ public class Player : MonoBehaviour
         {
             velocity.y = 0;
         }
+
 
 #if UNITY_EDITOR
         if (Input.GetButtonDown("Fire1") && !isDead)
@@ -304,7 +305,7 @@ public class Player : MonoBehaviour
                 break;
             case "Checkpoint":
                 playerRespawn.respawnPoint.transform.position = new Vector2(-1.5f, other.transform.position.y + 1.5f);
-                ActivateLevel(int.Parse(other.name));
+                levelManager.ActivateLevel(int.Parse(other.name));
                 break;
             case "Slide":
                 isSliding = true;
@@ -323,14 +324,6 @@ public class Player : MonoBehaviour
         {
             isSliding = false;
         }
-    }
-
-    //This method activates the level after the checkpoint and diactivates the previous level
-    void ActivateLevel(int checkpoint)
-    {
-        levels[checkpoint].gameObject.SetActive(false);
-        levels[checkpoint + 1].gameObject.SetActive(true);
-        levels[checkpoint + 1].InitializeLevel();
     }
 
     void Bounce(int bounce)

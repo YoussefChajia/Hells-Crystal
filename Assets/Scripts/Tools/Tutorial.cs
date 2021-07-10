@@ -98,8 +98,8 @@ public class Tutorial : MonoBehaviour
         player.isStop = true;
         yield return new WaitForSeconds(1.0f);
         player.gameObject.SetActive(true);
-        player.levels[0].gameObject.SetActive(true);
-        player.levels[0].InitializeLevel();
+        player.levelManager.levels[0].gameObject.SetActive(true);
+        player.levelManager.levels[0].InitializeLevel();
         PlayerPrefs.SetInt("Tutorial", 1);
     }
 }

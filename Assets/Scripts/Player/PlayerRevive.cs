@@ -5,7 +5,8 @@ using UnityEngine.UI;
 public class PlayerRevive : MonoBehaviour
 {
     public Player player;
-    public PlayerRespawn levelManager;
+    public PlayerRespawn playerRespawn;
+    public LevelManager levelManager;
 
     [Header("Revive UI")]
     public GameObject reviveUI;
@@ -16,7 +17,6 @@ public class PlayerRevive : MonoBehaviour
     public float waitTime;
 
     [Header("Revive Mechanic")]
-    [SerializeField] private GameObject revivePoint;
     [HideInInspector]
     public bool isRevived;
     [HideInInspector]
@@ -39,7 +39,7 @@ public class PlayerRevive : MonoBehaviour
         {
             waitTime = 0;
             isRevivable = false;
-            levelManager.Respawn();
+            playerRespawn.Respawn();
         }
     }
 
@@ -47,13 +47,14 @@ public class PlayerRevive : MonoBehaviour
     {
         isRevivable = false;
         reviveUI.SetActive(false);
+        levelManager.HideLevelObjects(levelManager.activeLevel);
         StartCoroutine("RevivePlayer");
     }
 
     public IEnumerator RevivePlayer()
     {
         //yield return new WaitForSeconds(2f);
-        player.transform.position = revivePoint.transform.position;
+        player.transform.position = new Vector3(1.5f, player.transform.position.y - 4, 0);
         player.isDead = false;
         player.isStop = true;
         yield return new WaitForSeconds(1.0f);

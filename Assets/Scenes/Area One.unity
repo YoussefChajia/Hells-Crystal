@@ -844,6 +844,56 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6881968665518717638, guid: cce30c8c3194c9a4f87c055a1b297f9e, type: 3}
   m_PrefabInstance: {fileID: 86973951}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &99461060
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 99461061}
+  - component: {fileID: 99461062}
+  m_Layer: 0
+  m_Name: Level Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &99461061
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 99461060}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 905593888}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &99461062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 99461060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6656a45fced51f6418e738ff23c023f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 2023183554}
+  levels:
+  - {fileID: 1599366929}
+  - {fileID: 1963208203}
+  - {fileID: 1626399732}
+  - {fileID: 1152464834}
+  activeLevel: {fileID: 0}
 --- !u!1001 &105129158
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2663,13 +2713,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 2023183554}
-  levelManager: {fileID: 1392825940}
+  playerRespawn: {fileID: 1392825940}
+  levelManager: {fileID: 99461062}
   reviveUI: {fileID: 1235728791}
   uiCount: {fileID: 11383129}
   revive: {fileID: 664426731}
   startWaitTime: 2
   waitTime: 2
-  revivePoint: {fileID: 1003992708}
   isRevived: 0
   isRevivable: 0
 --- !u!1001 &300957778
@@ -6959,7 +7009,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 905593888}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &766755926
 MonoBehaviour:
@@ -8408,11 +8458,11 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 99461061}
   - {fileID: 1392825939}
   - {fileID: 1482355295}
-  - {fileID: 766755925}
   - {fileID: 292320627}
-  - {fileID: 1003992709}
+  - {fileID: 766755925}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9181,36 +9231,6 @@ MonoBehaviour:
   flipVer: 0
   flipHor: 0
   easeAmount: 2
---- !u!1 &1003992708
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1003992709}
-  m_Layer: 0
-  m_Name: Revive Point
-  m_TagString: Untagged
-  m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1003992709
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1003992708}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.5, y: 18.000002, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 905593888}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1018989240
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12891,7 +12911,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 905593888}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1392825940
 MonoBehaviour:
@@ -12907,6 +12927,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 2023183554}
   respawnPoint: {fileID: 1482355294}
+  levelManager: {fileID: 99461062}
   playerRevive: {fileID: 292320628}
 --- !u!1001 &1398050918
 PrefabInstance:
@@ -13486,7 +13507,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 905593888}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1491222813
 PrefabInstance:
@@ -18108,12 +18129,7 @@ MonoBehaviour:
   holdTime: 0.1
   isStop: 1
   playerRespawn: {fileID: 1392825940}
-  levels:
-  - {fileID: 1599366929}
-  - {fileID: 1963208203}
-  - {fileID: 1626399732}
-  - {fileID: 1152464834}
-  activeLevel: {fileID: 0}
+  levelManager: {fileID: 99461062}
   animator: {fileID: 2023183555}
   trail: {fileID: 2023183556}
   sprite: {fileID: 2023183551}

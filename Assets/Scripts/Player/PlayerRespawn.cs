@@ -6,6 +6,7 @@ public class PlayerRespawn : MonoBehaviour
     //public PlayerController player;
     public Player player;
     public GameObject respawnPoint;
+    public LevelManager levelManager;
 
     [Header("Revive Mechanic")]
     public PlayerRevive playerRevive;
@@ -41,6 +42,7 @@ public class PlayerRespawn : MonoBehaviour
     public IEnumerator RespawnPlayer()
     {
         //yield return new WaitForSeconds(2f);
+        levelManager.ReactivateLevelObjects(player.levelManager.activeLevel);
         player.transform.position = respawnPoint.transform.position;
         player.isDead = false;
         player.isStop = true;
