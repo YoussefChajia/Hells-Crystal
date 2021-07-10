@@ -13,7 +13,7 @@ public class Tutorial : MonoBehaviour
     public GameObject[] UI;
     public Image uiCount;
 
-    public void getOut()
+    public void Begin()
     {
         uiCount.fillAmount = Mathf.InverseLerp(0, 2.5f, stopTime);
 
@@ -45,7 +45,7 @@ public class Tutorial : MonoBehaviour
                 if (stopTime <= 0)
                 {
                     stopTime = 0;
-                    StartCoroutine("Begin");
+                    StartCoroutine("Finish");
                 }
             }
             if (Input.GetButtonUp("Fire1"))
@@ -74,7 +74,7 @@ public class Tutorial : MonoBehaviour
                     if (stopTime <= 0)
                     {
                         stopTime = 0;
-                        StartCoroutine("Begin");
+                        StartCoroutine("Finish");
                     }
                 }
                 else if (touch.phase == TouchPhase.Ended)
@@ -87,7 +87,7 @@ public class Tutorial : MonoBehaviour
 
     }
 
-    public IEnumerator Begin()
+    public IEnumerator Finish()
     {
         UI[2].SetActive(false);
         player.isDead = true;
@@ -99,6 +99,7 @@ public class Tutorial : MonoBehaviour
         yield return new WaitForSeconds(1.0f);
         player.gameObject.SetActive(true);
         player.levels[0].gameObject.SetActive(true);
+        player.levels[0].InitializeLevel();
         PlayerPrefs.SetInt("Tutorial", 1);
     }
 }

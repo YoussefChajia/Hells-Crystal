@@ -43,8 +43,8 @@ public class Player : MonoBehaviour
     public PlayerRespawn playerRespawn;
 
     [Header("Levels")]
-    public GameObject[] levels;
-    public GameObject activeLevel;
+    public Level[] levels;
+    public Level activeLevel;
 
     [Header("Animator")]
     public Animator animator;
@@ -67,7 +67,7 @@ public class Player : MonoBehaviour
         tutorial.UI[3].SetActive(false);
 
         //Disabling all the levels, to activate them one at a time with the ActivateLevel method below
-        foreach (GameObject level in levels)
+        foreach (Level level in levels)
         {
             level.gameObject.SetActive(false);
         }
@@ -76,6 +76,7 @@ public class Player : MonoBehaviour
         {
             tutorial.UI[2].gameObject.SetActive(false);
             levels[0].gameObject.SetActive(true);
+            levels[0].InitializeLevel();
             //PlayerPrefs.SetInt("Tutorial", 0);
         }
     }
@@ -84,7 +85,7 @@ public class Player : MonoBehaviour
     {
         if (PlayerPrefs.GetInt("Tutorial", 0) == 0)
         {
-            tutorial.getOut();
+            tutorial.Begin();
         }
 
         if (controller.collisions.above || controller.collisions.below)
@@ -329,7 +330,7 @@ public class Player : MonoBehaviour
     {
         levels[checkpoint].gameObject.SetActive(false);
         levels[checkpoint + 1].gameObject.SetActive(true);
-        activeLevel = levels[checkpoint + 1];
+        levels[checkpoint + 1].InitializeLevel();
     }
 
     void Bounce(int bounce)
