@@ -116,7 +116,6 @@ public class Player : MonoBehaviour
             velocity.y = 0;
         }
 
-
 #if UNITY_EDITOR
         if (Input.GetButtonDown("Fire1") && !isDead)
         {
@@ -363,17 +362,4 @@ public class Player : MonoBehaviour
         spike.setFromWayPointIndex(0);
         spike.setPercentWayPoints(0);
     }
-
-    /* void OnDrawGizmos()
-    {
-        Gizmos.color = new Color(1.0f, 0.5f, 0.0f);
-        DrawRect(dashRightButton);
-    }
-
-    void DrawRect(Rect rect)
-    {
-        Gizmos.DrawWireCube(new Vector3(rect.center.x, rect.center.y, 0.01f), new Vector3(rect.size.x, rect.size.y, 0.01f));
-    } */
-
-
 }
