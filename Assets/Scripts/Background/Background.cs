@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Background : MonoBehaviour
 {
-    public GameObject[] sprites;
+    [SerializeField] private GameObject[] sprites;
 
     [Header("Camera")]
     private Camera mainCamera;

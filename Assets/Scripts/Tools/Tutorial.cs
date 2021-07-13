@@ -4,16 +4,22 @@ using UnityEngine.UI;
 
 public class Tutorial : MonoBehaviour
 {
-    public Player player;
-    public PlayerRespawn levelManager;
-    public GameObject respawnPoint;
-    public float stopTime = 2.5f;
+    [Header("Respawn Mechanic")]
+    [SerializeField] private Player player;
+    [SerializeField] private GameObject respawnPoint;
+
+    [Header("UI Tools")]
+    [SerializeField] private float stopTime;
+    [SerializeField] private GameObject[] UI;
+    [SerializeField] private Image uiCount;
     private int index;
 
-    public GameObject[] UI;
-    public Image uiCount;
+    public GameObject[] getUI()
+    {
+        return this.UI;
+    }
 
-    public void getOut()
+    public void Begin()
     {
         uiCount.fillAmount = Mathf.InverseLerp(0, 2.5f, stopTime);
 
@@ -45,7 +51,7 @@ public class Tutorial : MonoBehaviour
                 if (stopTime <= 0)
                 {
                     stopTime = 0;
-                    StartCoroutine("Begin");
+                    StartCoroutine("Finish");
                 }
             }
             if (Input.GetButtonUp("Fire1"))
@@ -74,7 +80,7 @@ public class Tutorial : MonoBehaviour
                     if (stopTime <= 0)
                     {
                         stopTime = 0;
-                        StartCoroutine("Begin");
+                        StartCoroutine("Finish");
                     }
                 }
                 else if (touch.phase == TouchPhase.Ended)
@@ -87,18 +93,19 @@ public class Tutorial : MonoBehaviour
 
     }
 
-    public IEnumerator Begin()
+    public IEnumerator Finish()
     {
         UI[2].SetActive(false);
-        player.isDead = true;
+        player.setIsDead(true);
         yield return new WaitForSeconds(1.0f);
         player.gameObject.SetActive(false);
         player.transform.position = respawnPoint.transform.position;
-        player.isDead = false;
-        player.isStop = true;
+        player.setIsDead(false);
+        player.setIsStop(true);
         yield return new WaitForSeconds(1.0f);
         player.gameObject.SetActive(true);
-        player.levels[0].gameObject.SetActive(true);
+        player.getLevelManager().getLevels()[0].gameObject.SetActive(true);
+        player.getLevelManager().getLevels()[0].InitializeLevel();
         PlayerPrefs.SetInt("Tutorial", 1);
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ParallaxEffect : MonoBehaviour
 {
-    public GameObject[] sprites;
+    [SerializeField] private GameObject[] sprites;
 
     [Header("Camera")]
     private Camera mainCamera;

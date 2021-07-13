@@ -3,20 +3,36 @@ using UnityEngine;
 
 public class PlayerRespawn : MonoBehaviour
 {
-    //public PlayerController player;
-    public Player player;
-    public GameObject respawnPoint;
-    public Camera mainCamera;
+    [Header("Respawn Mechanic")]
+    [SerializeField] private Player player;
+    [SerializeField] private GameObject respawnPoint;
+
 
     [Header("Revive Mechanic")]
-    public PlayerRevive playerRevive;
-    public bool isRevivable;
+    [SerializeField] private PlayerRevive playerRevive;
 
-    public void CheckRevive()
+    [Header("Level Manager")]
+    [SerializeField] private LevelManager levelManager;
+
+    public GameObject getRespawnPoint()
     {
-        if (!playerRevive.isRevived)
+        return this.respawnPoint;
+    }
+
+    public void Death()
+    {
+        playerRevive.waitTime = playerRevive.getStartWaitTime();
+        StartCoroutine("PlayerDeath");
+    }
+
+    public IEnumerator PlayerDeath()
+    {
+        yield return new WaitForSeconds(0.75f);
+        player.gameObject.SetActive(false);
+
+        if (!playerRevive.getIsRevived() && player.getIsDead())
         {
-            isRevivable = true;
+            playerRevive.setIsRevivable(true);
         }
         else
         {
@@ -26,19 +42,19 @@ public class PlayerRespawn : MonoBehaviour
 
     public void Respawn()
     {
-        playerRevive.reviveUI.SetActive(false);
-        playerRevive.waitTime = 2f;
+        playerRevive.getReviveUI().SetActive(false);
         StartCoroutine("RespawnPlayer");
     }
 
     public IEnumerator RespawnPlayer()
     {
         //yield return new WaitForSeconds(2f);
+        levelManager.ReactivateLevelObjects(player.getLevelManager().getActiveLevel());
         player.transform.position = respawnPoint.transform.position;
-        player.isDead = false;
-        player.isStop = true;
+        player.setIsDead(false);
+        player.setIsStop(true);
         yield return new WaitForSeconds(1.0f);
         player.gameObject.SetActive(true);
-        playerRevive.isRevived = false;
+        playerRevive.setIsRevived(false);
     }
 }

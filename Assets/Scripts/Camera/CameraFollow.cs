@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    public PlayerController target;
-    FocusArea focusArea;
+    [SerializeField] private PlayerController target;
+    private FocusArea focusArea;
 
-    public Vector2 focusAreaSize;
+    [SerializeField] private Vector2 focusAreaSize;
 
-    public float verticalOffset;
-    public float verticalSmoothTime;
-    float smoothVelocityY = 2;
+    [SerializeField] private float verticalOffset;
+    [SerializeField] private float verticalSmoothTime;
+    private float smoothVelocityY = 2;
 
     void Start()
     {

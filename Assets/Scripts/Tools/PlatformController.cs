@@ -5,30 +5,38 @@ using UnityEngine;
 public class PlatformController : MonoBehaviour
 {
     [Header("Way Points")]
-    public Vector3[] localWayPoints;
+    [SerializeField] private Vector3[] localWayPoints;
     private Vector3[] globalWayPoints;
-    [HideInInspector]
-    public int fromWayPointIndex;
+    private int fromWayPointIndex;
     private int toWayPointIndex;
-    [HideInInspector]
-    public float percentWayPoints;
+    private float percentWayPoints;
     private float distanceWayPoints;
 
     [Header("Movement")]
-    public float moveSpeed;
-    public float waitTime;
-    public bool cyclic;
+    [SerializeField] private float moveSpeed;
+    [SerializeField] private float waitTime;
+    [SerializeField] private bool cyclic;
     private Vector3 velocity;
 
     [Header("Flipper")]
-    public bool flipVer;
-    public bool flipHor;
+    [SerializeField] private bool flipVer;
+    [SerializeField] private bool flipHor;
 
     [Header("Easing")]
     [Range(1, 5)]
-    public float easeAmount = 1;
+    [SerializeField] private float easeAmount = 1;
     private float nextMoveTime;
     private float easedPercentWayPoints;
+
+    public void setFromWayPointIndex(int fromWayPointIndex)
+    {
+        this.fromWayPointIndex = fromWayPointIndex;
+    }
+
+    public void setPercentWayPoints(float percentWayPoints)
+    {
+        this.percentWayPoints = percentWayPoints;
+    }
 
     void Start()
     {
