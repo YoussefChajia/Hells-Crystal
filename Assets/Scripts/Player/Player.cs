@@ -6,77 +6,100 @@ public class Player : MonoBehaviour
 {
     [Header("Player")]
     private PlayerController controller;
-    [HideInInspector]
-    public Vector2 velocity;
-    public bool isDead;
+    private Vector2 velocity;
+    private bool isDead;
 
     [Header("Camera")]
-    public Camera mainCamera;
+    [SerializeField] private Camera mainCamera;
 
     [Header("Vertical Movement")]
-    public float moveSpeed;
+    [SerializeField] private float moveSpeed;
     private Vector2 screenBounds;
 
     [Header("Dash Move")]
-    public float dashSpeed;
-    public float dashDistance;
-    public bool isDashing;
+    [SerializeField] private float dashSpeed;
+    [SerializeField] private float dashDistance;
+    [SerializeField] private bool isDashing;
     private bool dashDirection;
     private Vector2 startPosition;
 
     [Header("Bounce Mechanic")]
-    public float jumpSpeed;
-    public float startJumpTime;
+    [SerializeField] private float jumpSpeed;
+    [SerializeField] private float startJumpTime;
     private float jumpTimer;
     private bool isJumping;
     private int direction;
 
     [Header("Stop Mechanic")]
-    public float holdTime;
+    [SerializeField] private float holdTime;
     private float hold;
-    public bool isStop;
+    private bool isStop = true;
 
     [Header("Slide Mechanic")]
     private bool isSliding;
 
     [Header("Player Respawn")]
-    public PlayerRespawn playerRespawn;
+    [SerializeField] private PlayerRespawn playerRespawn;
 
     [Header("Level Manager")]
-    public LevelManager levelManager;
+    [SerializeField] private LevelManager levelManager;
 
     [Header("Animator")]
-    public Animator animator;
+    [SerializeField] private Animator animator;
 
     [Header("Dragon")]
     private PlatformController tutSpike;
 
     [Header("Trail Effect")]
-    public TrailRenderer trail;
-    public SpriteRenderer sprite;
+    [SerializeField] private TrailRenderer trail;
+    [SerializeField] private SpriteRenderer sprite;
 
     [Header("Tutorial")]
-    public Tutorial tutorial;
+    [SerializeField] private Tutorial tutorial;
+
+    [Header("Revive UI")]
+    [SerializeField] private GameObject reviveUI;
+
+
+    public void setIsDead(bool isDead)
+    {
+        this.isDead = isDead;
+    }
+
+    public void setIsStop(bool isStop)
+    {
+        this.isStop = isStop;
+    }
+
+    public bool getIsDead()
+    {
+        return this.isDead;
+    }
+
+    public LevelManager getLevelManager()
+    {
+        return this.levelManager;
+    }
 
 
     void Start()
     {
         controller = GetComponent<PlayerController>();
         tutSpike = GameObject.Find("Dragon").GetComponent<PlatformController>();
-        tutorial.UI[3].SetActive(false);
+        reviveUI.SetActive(false);
 
         //Disabling all the levels, to activate them one at a time with the ActivateLevel method below
-        foreach (Level level in levelManager.levels)
+        foreach (Level level in levelManager.getLevels())
         {
             level.gameObject.SetActive(false);
         }
 
         if (PlayerPrefs.GetInt("Tutorial", 0) == 1)
         {
-            tutorial.UI[2].gameObject.SetActive(false);
-            levelManager.levels[0].gameObject.SetActive(true);
-            levelManager.activeLevel = levelManager.levels[0];
-            levelManager.activeLevel.InitializeLevel();
+            tutorial.getUI()[2].gameObject.SetActive(false);
+            levelManager.getLevels()[0].gameObject.SetActive(true);
+            levelManager.setActiveLevel(levelManager.getLevels()[0]);
+            levelManager.getActiveLevel().InitializeLevel();
             //PlayerPrefs.SetInt("Tutorial", 0);
         }
     }
@@ -304,7 +327,7 @@ public class Player : MonoBehaviour
                 ResetSpike(tutSpike);
                 break;
             case "Checkpoint":
-                playerRespawn.respawnPoint.transform.position = new Vector2(-1.5f, other.transform.position.y + 1.5f);
+                playerRespawn.getRespawnPoint().transform.position = new Vector2(-1.5f, other.transform.position.y + 1.5f);
                 levelManager.ActivateLevel(int.Parse(other.name));
                 break;
             case "Slide":
@@ -337,8 +360,8 @@ public class Player : MonoBehaviour
 
     void ResetSpike(PlatformController spike)
     {
-        spike.fromWayPointIndex = 0;
-        spike.percentWayPoints = 0;
+        spike.setFromWayPointIndex(0);
+        spike.setPercentWayPoints(0);
     }
 
     /* void OnDrawGizmos()

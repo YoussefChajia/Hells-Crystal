@@ -2714,14 +2714,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 2023183554}
   playerRespawn: {fileID: 1392825940}
-  levelManager: {fileID: 99461062}
   reviveUI: {fileID: 1235728791}
   uiCount: {fileID: 11383129}
   revive: {fileID: 664426731}
   startWaitTime: 2
   waitTime: 2
-  isRevived: 0
-  isRevivable: 0
+  levelManager: {fileID: 99461062}
 --- !u!1001 &300957778
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7026,12 +7024,11 @@ MonoBehaviour:
   player: {fileID: 2023183554}
   levelManager: {fileID: 1392825940}
   respawnPoint: {fileID: 1482355294}
-  stopTime: 3
+  stopTime: 2.5
   UI:
   - {fileID: 818169818}
   - {fileID: 557472402}
   - {fileID: 685147710}
-  - {fileID: 1235728791}
   uiCount: {fileID: 2057732857}
 --- !u!1001 &771199592
 PrefabInstance:
@@ -12927,8 +12924,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 2023183554}
   respawnPoint: {fileID: 1482355294}
-  levelManager: {fileID: 99461062}
   playerRevive: {fileID: 292320628}
+  levelManager: {fileID: 99461062}
 --- !u!1001 &1398050918
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18117,8 +18114,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cdbd0e86e63f684a94bb1bbc48ce996, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocity: {x: 0, y: 0}
-  isDead: 0
   mainCamera: {fileID: 519420031}
   moveSpeed: 3
   dashSpeed: 30
@@ -18127,13 +18122,13 @@ MonoBehaviour:
   jumpSpeed: 16
   startJumpTime: 0.2
   holdTime: 0.1
-  isStop: 1
   playerRespawn: {fileID: 1392825940}
   levelManager: {fileID: 99461062}
   animator: {fileID: 2023183555}
   trail: {fileID: 2023183556}
   sprite: {fileID: 2023183551}
   tutorial: {fileID: 766755926}
+  reviveUI: {fileID: 1235728791}
 --- !u!95 &2023183555
 Animator:
   serializedVersion: 3

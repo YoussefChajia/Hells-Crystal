@@ -6,9 +6,24 @@ public class Level : MonoBehaviour
     [SerializeField] private GameObject blocksParent;
     [SerializeField] private GameObject mechanicsParent;
 
-    public GameObject[] spikes;
-    public GameObject[] blocks;
-    public GameObject[] mechanics;
+    [SerializeField] private GameObject[] spikes;
+    [SerializeField] private GameObject[] blocks;
+    [SerializeField] private GameObject[] mechanics;
+
+    public GameObject[] getSpikes()
+    {
+        return this.spikes;
+    }
+
+    public GameObject[] getBlocks()
+    {
+        return this.blocks;
+    }
+
+    public GameObject[] getMechanics()
+    {
+        return this.mechanics;
+    }
 
 
     public void InitializeLevel()

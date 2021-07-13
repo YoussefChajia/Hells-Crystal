@@ -4,23 +4,54 @@ using UnityEngine.UI;
 
 public class PlayerRevive : MonoBehaviour
 {
-    public Player player;
-    public PlayerRespawn playerRespawn;
-    public LevelManager levelManager;
+    [Header("Respawn Mechanic")]
+    [SerializeField] private Player player;
+    [SerializeField] private PlayerRespawn playerRespawn;
 
     [Header("Revive UI")]
-    public GameObject reviveUI;
+    [SerializeField] private GameObject reviveUI;
     [SerializeField] private Image uiCount;
     [SerializeField] private Button revive;
-    [Range(0f, 3f)] public float startWaitTime;
+    [SerializeField] [Range(0f, 3f)] private float startWaitTime;
     [HideInInspector]
     public float waitTime;
 
     [Header("Revive Mechanic")]
-    [HideInInspector]
-    public bool isRevived;
-    [HideInInspector]
-    public bool isRevivable;
+    private bool isRevived;
+    private bool isRevivable;
+
+    [Header("Level Manager")]
+    [SerializeField] private LevelManager levelManager;
+
+    public GameObject getReviveUI()
+    {
+        return this.reviveUI;
+    }
+
+    public float getStartWaitTime()
+    {
+        return this.startWaitTime;
+    }
+
+    public void setIsRevived(bool isRevived)
+    {
+        this.isRevived = isRevived;
+    }
+
+    public void setIsRevivable(bool isRevivable)
+    {
+        this.isRevivable = isRevivable;
+    }
+
+    public bool getIsRevived()
+    {
+        return this.isRevived;
+    }
+
+    public bool getIsRevivable()
+    {
+        return this.isRevivable;
+    }
 
     private void Update()
     {
@@ -47,7 +78,7 @@ public class PlayerRevive : MonoBehaviour
     {
         isRevivable = false;
         reviveUI.SetActive(false);
-        levelManager.HideLevelObjects(levelManager.activeLevel);
+        levelManager.HideLevelObjects(levelManager.getActiveLevel());
         StartCoroutine("RevivePlayer");
     }
 
@@ -55,8 +86,8 @@ public class PlayerRevive : MonoBehaviour
     {
         //yield return new WaitForSeconds(2f);
         player.transform.position = new Vector3(1.5f, player.transform.position.y - 4, 0);
-        player.isDead = false;
-        player.isStop = true;
+        player.setIsDead(false);
+        player.setIsStop(true);
         yield return new WaitForSeconds(1.0f);
         player.gameObject.SetActive(true);
         isRevived = true;

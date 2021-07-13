@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PortalController : MonoBehaviour
 {
-    public PortalController destination;
+    [SerializeField] private PortalController destination;
     private bool Transporting = false;
 
     private void OnTriggerEnter2D(Collider2D other)

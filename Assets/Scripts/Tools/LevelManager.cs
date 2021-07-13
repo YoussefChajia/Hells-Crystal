@@ -5,28 +5,43 @@ using UnityEngine;
 public class LevelManager : MonoBehaviour
 {
     [SerializeField] private Player player;
-    public Level[] levels;
-    [HideInInspector] public Level activeLevel;
+    [SerializeField] private Level[] levels;
+    private Level activeLevel;
+
+    public void setActiveLevel(Level activeLevel)
+    {
+        this.activeLevel = activeLevel;
+    }
+
+    public Level getActiveLevel()
+    {
+        return this.activeLevel;
+    }
+
+    public Level[] getLevels()
+    {
+        return this.levels;
+    }
 
     public void HideLevelObjects(Level level)
     {
-        HideObject(level.spikes);
-        HideObject(level.blocks);
-        HideObject(level.mechanics);
+        HideObject(level.getSpikes());
+        HideObject(level.getBlocks());
+        HideObject(level.getMechanics());
     }
 
     public void ReactivateLevelObjects(Level level)
     {
-        ReactivateObject(level.spikes);
-        ReactivateObject(level.blocks);
-        ReactivateObject(level.mechanics);
+        ReactivateObject(level.getSpikes());
+        ReactivateObject(level.getBlocks());
+        ReactivateObject(level.getMechanics());
     }
 
     private void HideObject(GameObject[] objectArray)
     {
         for (int i = 0; i < objectArray.Length; i++)
         {
-            if (player.transform.position.y > objectArray[i].transform.position.y)
+            if (player.transform.position.y > objectArray[i].transform.position.y + 1.0f)
             {
                 objectArray[i].SetActive(false);
             }
