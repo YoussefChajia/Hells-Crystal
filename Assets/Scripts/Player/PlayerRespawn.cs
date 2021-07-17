@@ -4,7 +4,6 @@ using UnityEngine;
 public class PlayerRespawn : MonoBehaviour
 {
     [Header("Respawn Mechanic")]
-    [SerializeField] private Player player;
     [SerializeField] private GameObject respawnPoint;
 
 
@@ -28,9 +27,9 @@ public class PlayerRespawn : MonoBehaviour
     public IEnumerator PlayerDeath()
     {
         yield return new WaitForSeconds(0.75f);
-        player.gameObject.SetActive(false);
+        Player.instance.gameObject.SetActive(false);
 
-        if (!playerRevive.getIsRevived() && player.getIsDead())
+        if (!playerRevive.getIsRevived() && Player.instance.getIsDead())
         {
             playerRevive.setIsRevivable(true);
         }
@@ -49,12 +48,12 @@ public class PlayerRespawn : MonoBehaviour
     public IEnumerator RespawnPlayer()
     {
         //yield return new WaitForSeconds(2f);
-        levelManager.ReactivateLevelObjects(player.getLevelManager().getActiveLevel());
-        player.transform.position = respawnPoint.transform.position;
-        player.setIsDead(false);
-        player.setIsStop(true);
+        levelManager.ReactivateLevelObjects(Player.instance.getLevelManager().getActiveLevel());
+        Player.instance.transform.position = respawnPoint.transform.position;
+        Player.instance.setIsDead(false);
+        Player.instance.setIsStop(true);
         yield return new WaitForSeconds(1.0f);
-        player.gameObject.SetActive(true);
+        Player.instance.gameObject.SetActive(true);
         playerRevive.setIsRevived(false);
     }
 }

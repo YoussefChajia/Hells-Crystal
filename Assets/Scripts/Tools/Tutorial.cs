@@ -5,7 +5,6 @@ using UnityEngine.UI;
 public class Tutorial : MonoBehaviour
 {
     [Header("Respawn Mechanic")]
-    [SerializeField] private Player player;
     [SerializeField] private GameObject respawnPoint;
 
     [Header("UI Tools")]
@@ -96,16 +95,16 @@ public class Tutorial : MonoBehaviour
     public IEnumerator Finish()
     {
         UI[2].SetActive(false);
-        player.setIsDead(true);
+        Player.instance.setIsDead(true);
         yield return new WaitForSeconds(1.0f);
-        player.gameObject.SetActive(false);
-        player.transform.position = respawnPoint.transform.position;
-        player.setIsDead(false);
-        player.setIsStop(true);
+        Player.instance.gameObject.SetActive(false);
+        Player.instance.transform.position = respawnPoint.transform.position;
+        Player.instance.setIsDead(false);
+        Player.instance.setIsStop(true);
         yield return new WaitForSeconds(1.0f);
-        player.gameObject.SetActive(true);
-        player.getLevelManager().getLevels()[0].gameObject.SetActive(true);
-        player.getLevelManager().getLevels()[0].InitializeLevel();
+        Player.instance.gameObject.SetActive(true);
+        Player.instance.getLevelManager().getLevels()[0].gameObject.SetActive(true);
+        Player.instance.getLevelManager().getLevels()[0].InitializeLevel();
         PlayerPrefs.SetInt("Tutorial", 1);
     }
 }

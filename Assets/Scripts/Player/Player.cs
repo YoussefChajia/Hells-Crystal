@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public static Player instance;
+
     [Header("Player")]
     private PlayerController controller;
     private Vector2 velocity;
@@ -81,6 +83,13 @@ public class Player : MonoBehaviour
         return this.levelManager;
     }
 
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+    }
 
     void Start()
     {

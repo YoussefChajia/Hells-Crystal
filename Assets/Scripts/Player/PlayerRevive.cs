@@ -5,7 +5,6 @@ using UnityEngine.UI;
 public class PlayerRevive : MonoBehaviour
 {
     [Header("Respawn Mechanic")]
-    [SerializeField] private Player player;
     [SerializeField] private PlayerRespawn playerRespawn;
 
     [Header("Revive UI")]
@@ -85,11 +84,11 @@ public class PlayerRevive : MonoBehaviour
     public IEnumerator RevivePlayer()
     {
         //yield return new WaitForSeconds(2f);
-        player.transform.position = new Vector3(1.5f, player.transform.position.y - 4, 0);
-        player.setIsDead(false);
-        player.setIsStop(true);
+        Player.instance.transform.position = new Vector3(1.5f, Player.instance.transform.position.y - 10, 0);
+        Player.instance.setIsDead(false);
+        Player.instance.setIsStop(true);
         yield return new WaitForSeconds(1.0f);
-        player.gameObject.SetActive(true);
+        Player.instance.gameObject.SetActive(true);
         isRevived = true;
     }
 

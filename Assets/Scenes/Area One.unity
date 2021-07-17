@@ -887,13 +887,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6656a45fced51f6418e738ff23c023f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 2023183554}
   levels:
   - {fileID: 1599366929}
   - {fileID: 1963208203}
   - {fileID: 1626399732}
   - {fileID: 1152464834}
-  activeLevel: {fileID: 0}
 --- !u!1001 &105129158
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -976,8 +974,6 @@ MonoBehaviour:
   localWayPoints:
   - {x: -1.5, y: 0, z: 0}
   - {x: 1.5, y: 0, z: 0}
-  fromWayPointIndex: 0
-  percentWayPoints: 0
   moveSpeed: 1.5
   waitTime: 0
   cyclic: 0
@@ -1178,8 +1174,6 @@ MonoBehaviour:
   - {x: 1.5, y: -5, z: 0}
   - {x: 3, y: -3, z: 0}
   - {x: 3, y: 0, z: 0}
-  fromWayPointIndex: 0
-  percentWayPoints: 0
   moveSpeed: 1.5
   waitTime: 0
   cyclic: 1
@@ -1410,10 +1404,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   localWayPoints:
-  - {x: -1.5, y: 0, z: 0}
   - {x: 1.5, y: 0, z: 0}
-  fromWayPointIndex: 0
-  percentWayPoints: 0
+  - {x: -1.5, y: 0, z: 0}
   moveSpeed: 1
   waitTime: 0
   cyclic: 0
@@ -1445,8 +1437,6 @@ MonoBehaviour:
   localWayPoints:
   - {x: -1.5, y: 0, z: 0}
   - {x: 1.5, y: 0, z: 0}
-  fromWayPointIndex: 0
-  percentWayPoints: 0
   moveSpeed: 1.5
   waitTime: 0
   cyclic: 0
@@ -1558,8 +1548,6 @@ MonoBehaviour:
   - {x: -1.5, y: 5, z: 0}
   - {x: -3, y: 3, z: 0}
   - {x: -3, y: 0, z: 0}
-  fromWayPointIndex: 0
-  percentWayPoints: 0
   moveSpeed: 1.5
   waitTime: 0
   cyclic: 1
@@ -1946,8 +1934,6 @@ MonoBehaviour:
   localWayPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 3.5, z: 0}
-  fromWayPointIndex: 0
-  percentWayPoints: 0
   moveSpeed: 1
   waitTime: 0
   cyclic: 0
@@ -2106,8 +2092,6 @@ MonoBehaviour:
   localWayPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 2, y: 0, z: 0}
-  fromWayPointIndex: 0
-  percentWayPoints: 0
   moveSpeed: 1.5
   waitTime: 0
   cyclic: 0
@@ -2493,8 +2477,6 @@ MonoBehaviour:
   localWayPoints:
   - {x: 1.5, y: 0, z: 0}
   - {x: -1.5, y: 0, z: 0}
-  fromWayPointIndex: 0
-  percentWayPoints: 0
   moveSpeed: 1
   waitTime: 0
   cyclic: 0
@@ -2698,7 +2680,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 905593888}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &292320628
 MonoBehaviour:
@@ -2712,7 +2694,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d70cbb3820a604c4b840cde431d60481, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 2023183554}
   playerRespawn: {fileID: 1392825940}
   reviveUI: {fileID: 1235728791}
   uiCount: {fileID: 11383129}
@@ -2806,8 +2787,6 @@ MonoBehaviour:
   localWayPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: -3.5, z: 0}
-  fromWayPointIndex: 0
-  percentWayPoints: 0
   moveSpeed: 1.5
   waitTime: 0
   cyclic: 0
@@ -3084,8 +3063,6 @@ MonoBehaviour:
   localWayPoints:
   - {x: 0, y: 0, z: 0}
   - {x: -3, y: 0, z: 0}
-  fromWayPointIndex: 0
-  percentWayPoints: 0
   moveSpeed: 1
   waitTime: 0
   cyclic: 0
@@ -3395,8 +3372,6 @@ MonoBehaviour:
   - {x: 3, y: -6, z: 0}
   - {x: 3, y: -3, z: 0}
   - {x: 0, y: -3, z: 0}
-  fromWayPointIndex: 0
-  percentWayPoints: 0
   moveSpeed: 1.5
   waitTime: 0
   cyclic: 1
@@ -3487,8 +3462,6 @@ MonoBehaviour:
   - {x: 0, y: 3.5, z: 0}
   - {x: 3, y: 3.5, z: 0}
   - {x: 3, y: 0, z: 0}
-  fromWayPointIndex: 0
-  percentWayPoints: 0
   moveSpeed: 1.5
   waitTime: 0
   cyclic: 1
@@ -3793,8 +3766,6 @@ MonoBehaviour:
   localWayPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 5, z: 0}
-  fromWayPointIndex: 0
-  percentWayPoints: 0
   moveSpeed: 1.5
   waitTime: 0
   cyclic: 0
@@ -4234,8 +4205,6 @@ MonoBehaviour:
   localWayPoints:
   - {x: -1, y: 0, z: 0}
   - {x: 1, y: 0, z: 0}
-  fromWayPointIndex: 0
-  percentWayPoints: 0
   moveSpeed: 1
   waitTime: 0
   cyclic: 0
@@ -4469,8 +4438,6 @@ MonoBehaviour:
   localWayPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: -3.5, z: 0}
-  fromWayPointIndex: 0
-  percentWayPoints: 0
   moveSpeed: 1.5
   waitTime: 0
   cyclic: 0
@@ -4726,8 +4693,6 @@ MonoBehaviour:
   localWayPoints:
   - {x: 0, y: 0, z: 0}
   - {x: -3, y: 0, z: 0}
-  fromWayPointIndex: 0
-  percentWayPoints: 0
   moveSpeed: 1
   waitTime: 0
   cyclic: 0
@@ -5085,8 +5050,6 @@ MonoBehaviour:
   localWayPoints:
   - {x: 0, y: 0, z: 0}
   - {x: -3, y: 0, z: 0}
-  fromWayPointIndex: 0
-  percentWayPoints: 0
   moveSpeed: 1
   waitTime: 0
   cyclic: 0
@@ -5289,8 +5252,6 @@ MonoBehaviour:
   localWayPoints:
   - {x: 0, y: 0, z: 0}
   - {x: -3, y: 0, z: 0}
-  fromWayPointIndex: 0
-  percentWayPoints: 0
   moveSpeed: 1.5
   waitTime: 0
   cyclic: 0
@@ -5383,8 +5344,6 @@ MonoBehaviour:
   localWayPoints:
   - {x: -1, y: 0, z: 0}
   - {x: 1, y: 0, z: 0}
-  fromWayPointIndex: 0
-  percentWayPoints: 0
   moveSpeed: 1
   waitTime: 0
   cyclic: 0
@@ -5855,8 +5814,6 @@ MonoBehaviour:
   localWayPoints:
   - {x: 0, y: 0, z: 0}
   - {x: -1.5, y: 0, z: 0}
-  fromWayPointIndex: 0
-  percentWayPoints: 0
   moveSpeed: 1
   waitTime: 0
   cyclic: 0
@@ -6521,8 +6478,6 @@ MonoBehaviour:
   localWayPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 1.5, y: 0, z: 0}
-  fromWayPointIndex: 0
-  percentWayPoints: 0
   moveSpeed: 1
   waitTime: 0
   cyclic: 0
@@ -6772,8 +6727,6 @@ MonoBehaviour:
   localWayPoints:
   - {x: -1, y: 0, z: 0}
   - {x: 1, y: 0, z: 0}
-  fromWayPointIndex: 0
-  percentWayPoints: 0
   moveSpeed: 1
   waitTime: 0
   cyclic: 0
@@ -7021,8 +6974,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f7d2718f38dfb04fa26d8d763cacaa3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 2023183554}
-  levelManager: {fileID: 1392825940}
   respawnPoint: {fileID: 1482355294}
   stopTime: 2.5
   UI:
@@ -7112,8 +7063,6 @@ MonoBehaviour:
   localWayPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 3, y: 0, z: 0}
-  fromWayPointIndex: 0
-  percentWayPoints: 0
   moveSpeed: 1.5
   waitTime: 0
   cyclic: 0
@@ -7406,8 +7355,6 @@ MonoBehaviour:
   localWayPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 3.5, z: 0}
-  fromWayPointIndex: 0
-  percentWayPoints: 0
   moveSpeed: 1.5
   waitTime: 0
   cyclic: 0
@@ -7557,8 +7504,6 @@ MonoBehaviour:
   localWayPoints:
   - {x: 1, y: 0, z: 0}
   - {x: -1, y: 0, z: 0}
-  fromWayPointIndex: 0
-  percentWayPoints: 0
   moveSpeed: 1
   waitTime: 0
   cyclic: 0
@@ -7650,8 +7595,6 @@ MonoBehaviour:
   localWayPoints:
   - {x: 0, y: 0, z: 0}
   - {x: -3, y: 0, z: 0}
-  fromWayPointIndex: 0
-  percentWayPoints: 0
   moveSpeed: 1
   waitTime: 0
   cyclic: 0
@@ -7987,8 +7930,6 @@ MonoBehaviour:
   localWayPoints:
   - {x: 0, y: 0, z: 0}
   - {x: -3, y: 0, z: 0}
-  fromWayPointIndex: 0
-  percentWayPoints: 0
   moveSpeed: 1
   waitTime: 0
   cyclic: 0
@@ -8081,8 +8022,6 @@ MonoBehaviour:
   localWayPoints:
   - {x: 0, y: 0, z: 0}
   - {x: -3, y: 0, z: 0}
-  fromWayPointIndex: 0
-  percentWayPoints: 0
   moveSpeed: 1
   waitTime: 0
   cyclic: 0
@@ -8359,8 +8298,6 @@ MonoBehaviour:
   localWayPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 3, y: 0, z: 0}
-  fromWayPointIndex: 0
-  percentWayPoints: 0
   moveSpeed: 1.5
   waitTime: 0
   cyclic: 0
@@ -8457,8 +8394,8 @@ Transform:
   m_Children:
   - {fileID: 99461061}
   - {fileID: 1392825939}
-  - {fileID: 1482355295}
   - {fileID: 292320627}
+  - {fileID: 1482355295}
   - {fileID: 766755925}
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -8549,8 +8486,6 @@ MonoBehaviour:
   localWayPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 3, y: 0, z: 0}
-  fromWayPointIndex: 0
-  percentWayPoints: 0
   moveSpeed: 1
   waitTime: 0
   cyclic: 0
@@ -8831,8 +8766,6 @@ MonoBehaviour:
   localWayPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 3, y: 0, z: 0}
-  fromWayPointIndex: 0
-  percentWayPoints: 0
   moveSpeed: 1
   waitTime: 0
   cyclic: 0
@@ -8925,8 +8858,6 @@ MonoBehaviour:
   localWayPoints:
   - {x: 1.5, y: 0, z: 0}
   - {x: -1.5, y: 0, z: 0}
-  fromWayPointIndex: 0
-  percentWayPoints: 0
   moveSpeed: 1
   waitTime: 0
   cyclic: 0
@@ -9024,8 +8955,6 @@ MonoBehaviour:
   localWayPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 3, y: 0, z: 0}
-  fromWayPointIndex: 0
-  percentWayPoints: 0
   moveSpeed: 1.5
   waitTime: 0
   cyclic: 0
@@ -9220,8 +9149,6 @@ MonoBehaviour:
   localWayPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 3, y: 0, z: 0}
-  fromWayPointIndex: 0
-  percentWayPoints: 0
   moveSpeed: 1
   waitTime: 0
   cyclic: 0
@@ -9667,8 +9594,6 @@ MonoBehaviour:
   localWayPoints:
   - {x: 1.5, y: 0, z: 0}
   - {x: -1.5, y: 0, z: 0}
-  fromWayPointIndex: 0
-  percentWayPoints: 0
   moveSpeed: 1
   waitTime: 0
   cyclic: 0
@@ -9761,8 +9686,6 @@ MonoBehaviour:
   localWayPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 3.5, z: 0}
-  fromWayPointIndex: 0
-  percentWayPoints: 0
   moveSpeed: 1
   waitTime: 0
   cyclic: 0
@@ -10255,8 +10178,6 @@ MonoBehaviour:
   localWayPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: -5, z: 0}
-  fromWayPointIndex: 0
-  percentWayPoints: 0
   moveSpeed: 1.5
   waitTime: 0
   cyclic: 0
@@ -10738,7 +10659,6 @@ Transform:
   - {fileID: 323702071}
   - {fileID: 862358791}
   - {fileID: 1043323371}
-  - {fileID: 1273640809}
   m_Father: {fileID: 1626399731}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -10828,8 +10748,6 @@ MonoBehaviour:
   localWayPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: -3.5, z: 0}
-  fromWayPointIndex: 0
-  percentWayPoints: 0
   moveSpeed: 1.25
   waitTime: 0
   cyclic: 0
@@ -11013,8 +10931,6 @@ MonoBehaviour:
   localWayPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 3, y: 0, z: 0}
-  fromWayPointIndex: 0
-  percentWayPoints: 0
   moveSpeed: 1.5
   waitTime: 0
   cyclic: 0
@@ -11107,8 +11023,6 @@ MonoBehaviour:
   localWayPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: -3.5, z: 0}
-  fromWayPointIndex: 0
-  percentWayPoints: 0
   moveSpeed: 1
   waitTime: 0
   cyclic: 0
@@ -11508,84 +11422,12 @@ MonoBehaviour:
   localWayPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 3, y: 0, z: 0}
-  fromWayPointIndex: 0
-  percentWayPoints: 0
   moveSpeed: 1
   waitTime: 0
   cyclic: 0
   flipVer: 0
   flipHor: 0
   easeAmount: 2
---- !u!1001 &1273640808
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1135770280}
-    m_Modifications:
-    - target: {fileID: 887251695100670307, guid: 44994bd72c2d4914b8931520326c89ed, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 8b78a6391dd6d2240be0985a71a05f64, type: 3}
-    - target: {fileID: 5096966655660674050, guid: 44994bd72c2d4914b8931520326c89ed, type: 3}
-      propertyPath: m_Name
-      value: Spike Soon
-      objectReference: {fileID: 0}
-    - target: {fileID: 5096966655660674050, guid: 44994bd72c2d4914b8931520326c89ed, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8590844889553131165, guid: 44994bd72c2d4914b8931520326c89ed, type: 3}
-      propertyPath: m_RootOrder
-      value: 27
-      objectReference: {fileID: 0}
-    - target: {fileID: 8590844889553131165, guid: 44994bd72c2d4914b8931520326c89ed, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8590844889553131165, guid: 44994bd72c2d4914b8931520326c89ed, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 489.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8590844889553131165, guid: 44994bd72c2d4914b8931520326c89ed, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8590844889553131165, guid: 44994bd72c2d4914b8931520326c89ed, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8590844889553131165, guid: 44994bd72c2d4914b8931520326c89ed, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8590844889553131165, guid: 44994bd72c2d4914b8931520326c89ed, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8590844889553131165, guid: 44994bd72c2d4914b8931520326c89ed, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8590844889553131165, guid: 44994bd72c2d4914b8931520326c89ed, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8590844889553131165, guid: 44994bd72c2d4914b8931520326c89ed, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8590844889553131165, guid: 44994bd72c2d4914b8931520326c89ed, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 44994bd72c2d4914b8931520326c89ed, type: 3}
---- !u!4 &1273640809 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8590844889553131165, guid: 44994bd72c2d4914b8931520326c89ed, type: 3}
-  m_PrefabInstance: {fileID: 1273640808}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1287181623
 GameObject:
   m_ObjectHideFlags: 0
@@ -11782,8 +11624,6 @@ MonoBehaviour:
   localWayPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 3.5, z: 0}
-  fromWayPointIndex: 0
-  percentWayPoints: 0
   moveSpeed: 1.25
   waitTime: 0
   cyclic: 0
@@ -11872,8 +11712,6 @@ MonoBehaviour:
   localWayPoints:
   - {x: 0, y: 0, z: 0}
   - {x: -3, y: 0, z: 0}
-  fromWayPointIndex: 0
-  percentWayPoints: 0
   moveSpeed: 1.5
   waitTime: 0
   cyclic: 0
@@ -12024,8 +11862,6 @@ MonoBehaviour:
   localWayPoints:
   - {x: -1.5, y: 0, z: 0}
   - {x: 1.5, y: 0, z: 0}
-  fromWayPointIndex: 0
-  percentWayPoints: 0
   moveSpeed: 1.5
   waitTime: 0
   cyclic: 0
@@ -12118,8 +11954,6 @@ MonoBehaviour:
   localWayPoints:
   - {x: 1, y: 0, z: 0}
   - {x: -1, y: 0, z: 0}
-  fromWayPointIndex: 0
-  percentWayPoints: 0
   moveSpeed: 1
   waitTime: 0
   cyclic: 0
@@ -12450,8 +12284,6 @@ MonoBehaviour:
   localWayPoints:
   - {x: 0, y: 0, z: 0}
   - {x: -3, y: 0, z: 0}
-  fromWayPointIndex: 0
-  percentWayPoints: 0
   moveSpeed: 1.5
   waitTime: 0
   cyclic: 0
@@ -12722,8 +12554,6 @@ MonoBehaviour:
   localWayPoints:
   - {x: 0, y: 0, z: 0}
   - {x: -3, y: 0, z: 0}
-  fromWayPointIndex: 0
-  percentWayPoints: 0
   moveSpeed: 1
   waitTime: 0
   cyclic: 0
@@ -12922,7 +12752,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 939f6e29af4acb44b835690a8e424b22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 2023183554}
   respawnPoint: {fileID: 1482355294}
   playerRevive: {fileID: 292320628}
   levelManager: {fileID: 99461062}
@@ -13008,8 +12837,6 @@ MonoBehaviour:
   localWayPoints:
   - {x: 1.5, y: 0, z: 0}
   - {x: -1.5, y: 0, z: 0}
-  fromWayPointIndex: 0
-  percentWayPoints: 0
   moveSpeed: 1
   waitTime: 0
   cyclic: 0
@@ -13109,8 +12936,6 @@ MonoBehaviour:
   localWayPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 1.5, y: 0, z: 0}
-  fromWayPointIndex: 0
-  percentWayPoints: 0
   moveSpeed: 1
   waitTime: 0
   cyclic: 0
@@ -13504,7 +13329,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 905593888}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1491222813
 PrefabInstance:
@@ -13591,8 +13416,6 @@ MonoBehaviour:
   localWayPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 3, y: 0, z: 0}
-  fromWayPointIndex: 0
-  percentWayPoints: 0
   moveSpeed: 1
   waitTime: 0
   cyclic: 0
@@ -13694,8 +13517,6 @@ MonoBehaviour:
   localWayPoints:
   - {x: 1, y: 0, z: 0}
   - {x: -1, y: 0, z: 0}
-  fromWayPointIndex: 0
-  percentWayPoints: 0
   moveSpeed: 1.5
   waitTime: 0
   cyclic: 0
@@ -14194,8 +14015,6 @@ MonoBehaviour:
   localWayPoints:
   - {x: 0, y: 0, z: 0}
   - {x: -3, y: 0, z: 0}
-  fromWayPointIndex: 0
-  percentWayPoints: 0
   moveSpeed: 1.5
   waitTime: 0
   cyclic: 0
@@ -14288,8 +14107,6 @@ MonoBehaviour:
   localWayPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: -3.5, z: 0}
-  fromWayPointIndex: 0
-  percentWayPoints: 0
   moveSpeed: 1
   waitTime: 0
   cyclic: 0
@@ -14568,8 +14385,6 @@ MonoBehaviour:
   localWayPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 3.5, z: 0}
-  fromWayPointIndex: 0
-  percentWayPoints: 0
   moveSpeed: 1
   waitTime: 0
   cyclic: 0
@@ -14657,8 +14472,6 @@ MonoBehaviour:
   localWayPoints:
   - {x: 0, y: 0, z: 0}
   - {x: -2, y: 0, z: 0}
-  fromWayPointIndex: 0
-  percentWayPoints: 0
   moveSpeed: 1.5
   waitTime: 0
   cyclic: 0
@@ -15189,8 +15002,6 @@ MonoBehaviour:
   - {x: -3, y: 6, z: 0}
   - {x: -3, y: 3, z: 0}
   - {x: 0, y: 3, z: 0}
-  fromWayPointIndex: 0
-  percentWayPoints: 0
   moveSpeed: 1.5
   waitTime: 0
   cyclic: 1
@@ -15573,8 +15384,6 @@ MonoBehaviour:
   localWayPoints:
   - {x: -1.5, y: 0, z: 0}
   - {x: 1.5, y: 0, z: 0}
-  fromWayPointIndex: 0
-  percentWayPoints: 0
   moveSpeed: 1.25
   waitTime: 0
   cyclic: 0
@@ -15881,8 +15690,6 @@ MonoBehaviour:
   localWayPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 3, y: 0, z: 0}
-  fromWayPointIndex: 0
-  percentWayPoints: 0
   moveSpeed: 1
   waitTime: 0
   cyclic: 0
@@ -16434,8 +16241,6 @@ MonoBehaviour:
   localWayPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 3.5, z: 0}
-  fromWayPointIndex: 0
-  percentWayPoints: 0
   moveSpeed: 1
   waitTime: 0
   cyclic: 0
@@ -16594,8 +16399,6 @@ MonoBehaviour:
   localWayPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: -3.5, z: 0}
-  fromWayPointIndex: 0
-  percentWayPoints: 0
   moveSpeed: 1
   waitTime: 0
   cyclic: 0
@@ -17041,8 +16844,6 @@ MonoBehaviour:
   localWayPoints:
   - {x: 0, y: 0, z: 0}
   - {x: -3, y: 0, z: 0}
-  fromWayPointIndex: 0
-  percentWayPoints: 0
   moveSpeed: 1
   waitTime: 0
   cyclic: 0
@@ -17460,8 +17261,6 @@ MonoBehaviour:
   localWayPoints:
   - {x: 1, y: 0, z: 0}
   - {x: -1, y: 0, z: 0}
-  fromWayPointIndex: 0
-  percentWayPoints: 0
   moveSpeed: 1
   waitTime: 0
   cyclic: 0
@@ -17746,8 +17545,6 @@ MonoBehaviour:
   localWayPoints:
   - {x: -1, y: 0, z: 0}
   - {x: 1, y: 0, z: 0}
-  fromWayPointIndex: 0
-  percentWayPoints: 0
   moveSpeed: 1
   waitTime: 0
   cyclic: 0
@@ -18678,10 +18475,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   localWayPoints:
-  - {x: 0, y: 0, z: 0}
   - {x: -3, y: 0, z: 0}
-  fromWayPointIndex: 0
-  percentWayPoints: 0
+  - {x: 0, y: 0, z: 0}
   moveSpeed: 1
   waitTime: 0
   cyclic: 0
@@ -18845,8 +18640,6 @@ MonoBehaviour:
   localWayPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: -3.5, z: 0}
-  fromWayPointIndex: 0
-  percentWayPoints: 0
   moveSpeed: 1
   waitTime: 0
   cyclic: 0
@@ -19024,8 +18817,6 @@ MonoBehaviour:
   localWayPoints:
   - {x: 1, y: 0, z: 0}
   - {x: -1, y: 0, z: 0}
-  fromWayPointIndex: 0
-  percentWayPoints: 0
   moveSpeed: 1
   waitTime: 0
   cyclic: 0
@@ -19346,8 +19137,6 @@ MonoBehaviour:
   localWayPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: -3.5, z: 0}
-  fromWayPointIndex: 0
-  percentWayPoints: 0
   moveSpeed: 1.5
   waitTime: 0
   cyclic: 0
@@ -19451,8 +19240,6 @@ MonoBehaviour:
   - {x: 4.75, y: 0, z: 0}
   - {x: -6, y: 0, z: 0}
   - {x: 6, y: 0, z: 0}
-  fromWayPointIndex: 0
-  percentWayPoints: 0
   moveSpeed: 1
   waitTime: 0
   cyclic: 1

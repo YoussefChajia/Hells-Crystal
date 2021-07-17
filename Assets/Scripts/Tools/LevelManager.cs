@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
-    [SerializeField] private Player player;
     [SerializeField] private Level[] levels;
     private Level activeLevel;
 
@@ -41,7 +40,7 @@ public class LevelManager : MonoBehaviour
     {
         for (int i = 0; i < objectArray.Length; i++)
         {
-            if (player.transform.position.y > objectArray[i].transform.position.y + 1.0f)
+            if (Player.instance.transform.position.y > objectArray[i].transform.position.y + 6.0f)
             {
                 objectArray[i].SetActive(false);
             }
