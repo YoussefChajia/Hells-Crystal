@@ -3,20 +3,12 @@ using UnityEngine;
 
 public class PlayerRespawn : MonoBehaviour
 {
-    [Header("Respawn Mechanic")]
-    [SerializeField] private GameObject respawnPoint;
-
-
     [Header("Revive Mechanic")]
     [SerializeField] private PlayerRevive playerRevive;
 
     [Header("Level Manager")]
     [SerializeField] private LevelManager levelManager;
 
-    public GameObject getRespawnPoint()
-    {
-        return this.respawnPoint;
-    }
 
     public void Death()
     {
@@ -49,7 +41,7 @@ public class PlayerRespawn : MonoBehaviour
     {
         //yield return new WaitForSeconds(2f);
         levelManager.ReactivateLevelObjects(Player.instance.getLevelManager().getActiveLevel());
-        Player.instance.transform.position = respawnPoint.transform.position;
+        Player.instance.transform.position = Player.instance.getLevelManager().getActiveLevel().getRespawnPoint().transform.position;
         Player.instance.setIsDead(false);
         Player.instance.setIsStop(true);
         yield return new WaitForSeconds(1.0f);

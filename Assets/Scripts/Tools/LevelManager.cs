@@ -27,6 +27,7 @@ public class LevelManager : MonoBehaviour
         HideObject(level.getSpikes());
         HideObject(level.getBlocks());
         HideObject(level.getMechanics());
+        HideObject(level.getDiamonds());
     }
 
     public void ReactivateLevelObjects(Level level)
@@ -34,6 +35,7 @@ public class LevelManager : MonoBehaviour
         ReactivateObject(level.getSpikes());
         ReactivateObject(level.getBlocks());
         ReactivateObject(level.getMechanics());
+        ReactivateObject(level.getDiamonds());
     }
 
     private void HideObject(GameObject[] objectArray)
@@ -56,11 +58,11 @@ public class LevelManager : MonoBehaviour
     }
 
     //This method activates the level after the checkpoint and diactivates the previous level
-    public void ActivateLevel(int checkpoint)
+    public void ActivateLevel(CheckPoint checkPoint)
     {
-        levels[checkpoint].gameObject.SetActive(false);
-        levels[checkpoint + 1].gameObject.SetActive(true);
-        activeLevel = levels[checkpoint + 1];
+        checkPoint.getPreviousLevel().gameObject.SetActive(false);
+        checkPoint.getNextLevel().gameObject.SetActive(true);
+        activeLevel = checkPoint.getNextLevel();
         activeLevel.InitializeLevel();
     }
 }

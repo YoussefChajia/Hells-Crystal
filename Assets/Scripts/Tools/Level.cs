@@ -5,10 +5,14 @@ public class Level : MonoBehaviour
     [SerializeField] private GameObject spikesParent;
     [SerializeField] private GameObject blocksParent;
     [SerializeField] private GameObject mechanicsParent;
+    [SerializeField] private GameObject diamondsParent;
 
     [SerializeField] private GameObject[] spikes;
     [SerializeField] private GameObject[] blocks;
     [SerializeField] private GameObject[] mechanics;
+    [SerializeField] private GameObject[] diamonds;
+
+    [SerializeField] private GameObject respawnPoint;
 
     public GameObject[] getSpikes()
     {
@@ -25,12 +29,23 @@ public class Level : MonoBehaviour
         return this.mechanics;
     }
 
+    public GameObject[] getDiamonds()
+    {
+        return this.diamonds;
+    }
+
+    public GameObject getRespawnPoint()
+    {
+        return this.respawnPoint;
+    }
+
 
     public void InitializeLevel()
     {
         spikes = GetArray(spikesParent);
         blocks = GetArray(blocksParent);
         mechanics = GetArray(mechanicsParent);
+        diamonds = GetArray(diamondsParent);
     }
 
     private GameObject[] GetArray(GameObject parent)

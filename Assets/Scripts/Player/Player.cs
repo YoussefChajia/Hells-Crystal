@@ -335,14 +335,13 @@ public class Player : MonoBehaviour
                 ResetSpike(tutSpike);
                 break;
             case "Checkpoint":
-                playerRespawn.getRespawnPoint().transform.position = new Vector2(-1.5f, other.transform.position.y + 1.5f);
-                levelManager.ActivateLevel(int.Parse(other.name));
+                levelManager.ActivateLevel(other.GetComponent<CheckPoint>());
                 break;
             case "Slide":
                 isSliding = true;
                 break;
             case "Coin":
-                Destroy(other.gameObject);
+                other.gameObject.SetActive(false);
                 break;
             default:
                 break;
