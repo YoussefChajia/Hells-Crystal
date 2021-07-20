@@ -6,6 +6,7 @@ public class LevelManager : MonoBehaviour
 {
     [SerializeField] private Level[] levels;
     private Level activeLevel;
+    private int reachedLevel;
 
     public void setActiveLevel(Level activeLevel)
     {
@@ -20,6 +21,16 @@ public class LevelManager : MonoBehaviour
     public Level[] getLevels()
     {
         return this.levels;
+    }
+
+    public void setReachedLevel(int reachedLevel)
+    {
+        this.reachedLevel = reachedLevel;
+    }
+
+    public int getReachedLevel()
+    {
+        return this.reachedLevel;
     }
 
     public void HideLevelObjects(Level level)

@@ -50,7 +50,7 @@ public class Player : MonoBehaviour
     [SerializeField] private Animator animator;
 
     [Header("Dragon")]
-    private PlatformController tutSpike;
+    [SerializeField] private PlatformController tutSpike;
 
     [Header("Trail Effect")]
     [SerializeField] private TrailRenderer trail;
@@ -58,9 +58,13 @@ public class Player : MonoBehaviour
 
     [Header("Tutorial")]
     [SerializeField] private Tutorial tutorial;
+    private bool isTutPlayed;
 
     [Header("Revive UI")]
     [SerializeField] private GameObject reviveUI;
+
+    [Header("Score Manager")]
+    [SerializeField] private ScoreManager scoreManager;
 
 
     public void setIsDead(bool isDead)
@@ -83,18 +87,37 @@ public class Player : MonoBehaviour
         return this.levelManager;
     }
 
+    public void setIsTutPlayed(bool isTutPlayed)
+    {
+        this.isTutPlayed = isTutPlayed;
+    }
+
+    public bool getIsTutPlayed()
+    {
+        return this.isTutPlayed;
+    }
+
+    public ScoreManager getScoreManager()
+    {
+        return this.scoreManager;
+    }
+
     private void Awake()
     {
         if (instance == null)
         {
             instance = this;
         }
+
+        GameData data = SaveSystem.LoadPlayer();
+
+        this.levelManager.setReachedLevel(data.getLevel());
+        this.scoreManager.setDiamonds(data.getDiamonds());
     }
 
     void Start()
     {
         controller = GetComponent<PlayerController>();
-        tutSpike = GameObject.Find("Dragon").GetComponent<PlatformController>();
         reviveUI.SetActive(false);
 
         //Disabling all the levels, to activate them one at a time with the ActivateLevel method below
@@ -342,6 +365,7 @@ public class Player : MonoBehaviour
                 break;
             case "Coin":
                 other.gameObject.SetActive(false);
+                scoreManager.AddScore();
                 break;
             default:
                 break;

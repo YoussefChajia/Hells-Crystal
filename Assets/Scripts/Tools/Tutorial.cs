@@ -94,6 +94,7 @@ public class Tutorial : MonoBehaviour
 
     public IEnumerator Finish()
     {
+        LevelManager levelManager = Player.instance.getLevelManager();
         UI[2].SetActive(false);
         Player.instance.setIsDead(true);
         yield return new WaitForSeconds(1.0f);
@@ -104,7 +105,8 @@ public class Tutorial : MonoBehaviour
         yield return new WaitForSeconds(1.0f);
         Player.instance.gameObject.SetActive(true);
         Player.instance.getLevelManager().getLevels()[0].gameObject.SetActive(true);
-        Player.instance.getLevelManager().getLevels()[0].InitializeLevel();
+        Player.instance.getLevelManager().setActiveLevel(Player.instance.getLevelManager().getLevels()[0]);
+        Player.instance.getLevelManager().getActiveLevel().InitializeLevel();
         PlayerPrefs.SetInt("Tutorial", 1);
     }
 }
