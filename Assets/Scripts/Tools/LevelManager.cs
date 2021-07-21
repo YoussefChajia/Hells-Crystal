@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 public class LevelManager : MonoBehaviour
 {
@@ -75,5 +74,6 @@ public class LevelManager : MonoBehaviour
         checkPoint.getNextLevel().gameObject.SetActive(true);
         activeLevel = checkPoint.getNextLevel();
         activeLevel.InitializeLevel();
+        this.reachedLevel = ArrayUtility.IndexOf(levels, activeLevel);
     }
 }

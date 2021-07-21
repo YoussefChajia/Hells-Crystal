@@ -6,7 +6,7 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] private Text scoreText;
     [SerializeField] private Text diamondsText;
 
-    private int score = 0;
+    private int score;
     private int diamonds;
 
     public void setDiamonds(int diamonds)
@@ -33,12 +33,12 @@ public class ScoreManager : MonoBehaviour
     public void AddScore()
     {
         score += 1;
+        diamonds += 1;
         scoreText.text = "Score : " + score.ToString();
     }
 
     private void OnApplicationQuit()
     {
-        diamonds += score;
-        SaveSystem.SavePlayer(Player.instance);
+        SaveSystem.SaveData(Player.instance);
     }
 }

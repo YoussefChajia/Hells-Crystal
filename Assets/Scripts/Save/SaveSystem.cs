@@ -6,7 +6,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 public static class SaveSystem
 {
-    public static void SavePlayer(Player player)
+    public static void SaveData(Player player)
     {
         string path = Application.persistentDataPath + "/game.binar";
         GameData data = new GameData(player);
@@ -17,31 +17,37 @@ public static class SaveSystem
         }
     }
 
-    public static GameData LoadPlayer()
+    public static GameData LoadData()
     {
-        try
+        string path = Application.persistentDataPath + "/game.binar";
+        if (File.Exists(path))
         {
-            string path = Application.persistentDataPath + "/game.binar";
-            if (File.Exists(path))
+            GameData data;
+            BinaryFormatter formatter = new BinaryFormatter();
+            using (FileStream stream = File.Open(path, FileMode.Open))
             {
-                GameData data;
-                BinaryFormatter formatter = new BinaryFormatter();
-                using (FileStream stream = File.Open(path, FileMode.Open))
-                {
-                    data = formatter.Deserialize(stream) as GameData;
-                }
-                return data;
+                data = formatter.Deserialize(stream) as GameData;
             }
-            else
-            {
-                Debug.LogError("File missing in " + path);
-                return null;
-            }
+            return data;
         }
-        catch (System.Exception e)
+        else
         {
-            Debug.LogError("Error Loading File " + e);
+            Debug.LogError("File missing in " + path);
             return null;
+        }
+    }
+
+    public static bool FileCheck()
+    {
+        string path = Application.persistentDataPath + "/game.binar";
+        if (File.Exists(path))
+        {
+            return true;
+        }
+        else
+        {
+            Debug.LogError("File missing in " + path);
+            return false;
         }
     }
 }

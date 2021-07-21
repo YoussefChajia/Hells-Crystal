@@ -109,10 +109,13 @@ public class Player : MonoBehaviour
             instance = this;
         }
 
-        GameData data = SaveSystem.LoadPlayer();
+        if (SaveSystem.FileCheck())
+        {
+            GameData data = SaveSystem.LoadData();
 
-        this.levelManager.setReachedLevel(data.getLevel());
-        this.scoreManager.setDiamonds(data.getDiamonds());
+            this.levelManager.setReachedLevel(data.getLevel());
+            this.scoreManager.setDiamonds(data.getDiamonds());
+        }
     }
 
     void Start()
@@ -129,8 +132,9 @@ public class Player : MonoBehaviour
         if (PlayerPrefs.GetInt("Tutorial", 0) == 1)
         {
             tutorial.getUI()[2].gameObject.SetActive(false);
-            levelManager.getLevels()[0].gameObject.SetActive(true);
-            levelManager.setActiveLevel(levelManager.getLevels()[0]);
+            this.transform.position = levelManager.getLevels()[levelManager.getReachedLevel()].getRespawnPoint().transform.position;
+            levelManager.getLevels()[levelManager.getReachedLevel()].gameObject.SetActive(true);
+            levelManager.setActiveLevel(levelManager.getLevels()[levelManager.getReachedLevel()]);
             levelManager.getActiveLevel().InitializeLevel();
             //PlayerPrefs.SetInt("Tutorial", 0);
         }
