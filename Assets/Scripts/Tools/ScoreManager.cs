@@ -4,7 +4,6 @@ using UnityEngine.UI;
 public class ScoreManager : MonoBehaviour
 {
     [SerializeField] private Text scoreText;
-    [SerializeField] private Text diamondsText;
 
     private int score;
     private int diamonds;
@@ -27,7 +26,6 @@ public class ScoreManager : MonoBehaviour
     private void Start()
     {
         scoreText.text = "Score : " + score.ToString();
-        diamondsText.text = "Diamonds : " + diamonds.ToString();
     }
 
     public void AddScore()

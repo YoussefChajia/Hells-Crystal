@@ -153,7 +153,7 @@ public class Player : MonoBehaviour
         }
 
 #if UNITY_EDITOR
-        if (Input.GetButtonDown("Fire1") && !isDead)
+        if (Input.GetButtonDown("Fire1") && !isDead && !PauseMenu.isPaused)
         {
             startPosition = transform.position;
             //Enabling dash trail
@@ -172,7 +172,7 @@ public class Player : MonoBehaviour
                 dashDirection = false;
             }
         }
-        if (Input.GetButton("Fire1") && !isDead)
+        if (Input.GetButton("Fire1") && !isDead && !PauseMenu.isPaused)
         {
             hold += Time.deltaTime;
             if (hold > holdTime && !isSliding)
@@ -180,7 +180,7 @@ public class Player : MonoBehaviour
                 isStop = true;
             }
         }
-        if (Input.GetButtonUp("Fire1") && !isDead)
+        if (Input.GetButtonUp("Fire1") && !isDead && !PauseMenu.isPaused)
         {
             isStop = false;
             hold = 0f;

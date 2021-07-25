@@ -46,7 +46,6 @@ public static class SaveSystem
         }
         else
         {
-            Debug.LogError("File missing in " + path);
             return false;
         }
     }
