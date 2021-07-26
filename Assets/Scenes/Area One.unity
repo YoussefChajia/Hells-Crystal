@@ -1514,7 +1514,6 @@ GameObject:
   - component: {fileID: 172548459}
   - component: {fileID: 172548458}
   - component: {fileID: 172548457}
-  - component: {fileID: 172548456}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1522,23 +1521,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &172548456
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 172548455}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_IgnoreReversedGraphics: 1
-  m_BlockingObjects: 0
-  m_BlockingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
 --- !u!114 &172548457
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2593,7 +2575,7 @@ GameObject:
   - component: {fileID: 292320627}
   - component: {fileID: 292320628}
   m_Layer: 0
-  m_Name: Player Revive
+  m_Name: Player Respawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2622,15 +2604,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 292320626}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d70cbb3820a604c4b840cde431d60481, type: 3}
+  m_Script: {fileID: 11500000, guid: 939f6e29af4acb44b835690a8e424b22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   playerRespawn: {fileID: 1392825940}
   reviveUI: {fileID: 1235728791}
   uiCount: {fileID: 11383129}
-  revive: {fileID: 664426731}
   startWaitTime: 2
-  waitTime: 2
+  waitTime: 0
   levelManager: {fileID: 99461062}
 --- !u!1001 &300957778
 PrefabInstance:
@@ -6504,7 +6485,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &646532292
 Transform:
   m_ObjectHideFlags: 0
@@ -6723,7 +6704,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 292320628}
-        m_TargetAssemblyTypeName: PlayerRevive, Assembly-CSharp
+        m_TargetAssemblyTypeName: PlayerRespawn, Assembly-CSharp
         m_MethodName: Revive
         m_Mode: 1
         m_Arguments:
@@ -9608,7 +9589,6 @@ GameObject:
   - component: {fileID: 919429639}
   - component: {fileID: 919429642}
   - component: {fileID: 919429641}
-  - component: {fileID: 919429640}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -9636,23 +9616,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &919429640
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 919429638}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_IgnoreReversedGraphics: 1
-  m_BlockingObjects: 0
-  m_BlockingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
 --- !u!114 &919429641
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12625,7 +12588,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1235728792
 Transform:
   m_ObjectHideFlags: 0
@@ -14261,7 +14224,7 @@ GameObject:
   - component: {fileID: 1392825939}
   - component: {fileID: 1392825940}
   m_Layer: 0
-  m_Name: Player Respawn
+  m_Name: Player Death
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14290,7 +14253,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1392825938}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 939f6e29af4acb44b835690a8e424b22, type: 3}
+  m_Script: {fileID: 11500000, guid: 3205822a0fa888d42a09a6abb58a4971, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   playerRevive: {fileID: 292320628}
@@ -18683,7 +18646,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1869993013
 Transform:
   m_ObjectHideFlags: 0
@@ -20239,7 +20202,9 @@ MonoBehaviour:
   trail: {fileID: 2023183556}
   sprite: {fileID: 2023183551}
   tutorial: {fileID: 766755926}
-  reviveUI: {fileID: 1235728791}
+  gameUI:
+  - {fileID: 646532291}
+  - {fileID: 1869993012}
   scoreManager: {fileID: 201196212}
 --- !u!95 &2023183555
 Animator:

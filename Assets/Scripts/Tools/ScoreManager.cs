@@ -25,18 +25,32 @@ public class ScoreManager : MonoBehaviour
 
     private void Start()
     {
+        GameEvents.current.onPlayerDeathTrigger += ResetScore;
+        GameEvents.current.onDiamondTriggerEnter += AddScore;
         scoreText.text = "Score : " + score.ToString();
     }
 
-    public void AddScore()
+    private void AddScore()
     {
         score += 1;
         diamonds += 1;
         scoreText.text = "Score : " + score.ToString();
     }
 
+    private void ResetScore()
+    {
+        score = 0;
+        scoreText.text = "Score : " + score.ToString();
+    }
+
     private void OnApplicationQuit()
     {
         SaveSystem.SaveData(Player.instance);
+    }
+
+    private void OnDestroy()
+    {
+        GameEvents.current.onPlayerDeathTrigger -= ResetScore;
+        GameEvents.current.onDiamondTriggerEnter -= AddScore;
     }
 }

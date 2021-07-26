@@ -31,21 +31,21 @@ public class GameEvents : MonoBehaviour
         }
     }
 
-    public event Action onReviveButtonClick;
-    public void ReviveButtonClick()
+    public event Action onPlayerDeathTrigger;
+    public void PlayerDeathTrigger()
     {
-        if (onReviveButtonClick != null)
+        if (onPlayerDeathTrigger != null)
         {
-            onReviveButtonClick();
+            onPlayerDeathTrigger();
         }
     }
 
-    public event Action onRespawnPlayerTrigger;
-    public void RespawnPlayerTrigger()
+    public event Action onDiamondTriggerEnter;
+    public void DiamondTriggerEnter()
     {
-        if (onRespawnPlayerTrigger != null)
+        if (onDiamondTriggerEnter != null)
         {
-            onRespawnPlayerTrigger();
+            onDiamondTriggerEnter();
         }
     }
 }

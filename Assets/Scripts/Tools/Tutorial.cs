@@ -107,6 +107,8 @@ public class Tutorial : MonoBehaviour
         Player.instance.getLevelManager().getLevels()[0].gameObject.SetActive(true);
         Player.instance.getLevelManager().setActiveLevel(Player.instance.getLevelManager().getLevels()[0]);
         Player.instance.getLevelManager().getActiveLevel().InitializeLevel();
+        Player.instance.getGameUI()[0].SetActive(true);
+        Player.instance.getGameUI()[1].SetActive(true);
         PlayerPrefs.SetInt("Tutorial", 1);
     }
 }

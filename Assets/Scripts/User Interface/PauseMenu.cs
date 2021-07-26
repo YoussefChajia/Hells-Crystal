@@ -4,7 +4,7 @@ public class PauseMenu : MonoBehaviour
 {
     [SerializeField] private GameObject pauseMenu;
 
-    private void OnEnable()
+    private void Start()
     {
         GameEvents.current.onPauseButtonClick += OnPauseMenuOpen;
         GameEvents.current.onResumeButtonClick += OnPauseMenuClose;
@@ -22,7 +22,7 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1f;
     }
 
-    private void OnDisable()
+    private void OnDestroy()
     {
         GameEvents.current.onPauseButtonClick -= OnPauseMenuOpen;
         GameEvents.current.onResumeButtonClick -= OnPauseMenuClose;

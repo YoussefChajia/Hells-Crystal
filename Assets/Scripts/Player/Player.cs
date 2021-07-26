@@ -42,7 +42,7 @@ public class Player : MonoBehaviour
     private bool isSliding;
 
     [Header("Player Respawn")]
-    [SerializeField] private PlayerRespawn playerRespawn;
+    [SerializeField] private PlayerDeath playerRespawn;
 
     [Header("Level Manager")]
     [SerializeField] private LevelManager levelManager;
@@ -61,8 +61,8 @@ public class Player : MonoBehaviour
     [SerializeField] private Tutorial tutorial;
     private bool isTutPlayed;
 
-    [Header("Revive UI")]
-    [SerializeField] private GameObject reviveUI;
+    [Header("Game UI")]
+    [SerializeField] private GameObject[] gameUI;
 
     [Header("Score Manager")]
     [SerializeField] private ScoreManager scoreManager;
@@ -103,6 +103,11 @@ public class Player : MonoBehaviour
         return this.scoreManager;
     }
 
+    public GameObject[] getGameUI()
+    {
+        return this.gameUI;
+    }
+
     private void Awake()
     {
         if (instance == null)
@@ -122,7 +127,6 @@ public class Player : MonoBehaviour
     void Start()
     {
         controller = GetComponent<PlayerController>();
-        reviveUI.SetActive(false);
 
         //Disabling all the levels, to activate them one at a time with the ActivateLevel method below
         foreach (Level level in levelManager.getLevels())
@@ -132,6 +136,8 @@ public class Player : MonoBehaviour
 
         if (PlayerPrefs.GetInt("Tutorial", 0) == 1)
         {
+            gameUI[0].SetActive(true);
+            gameUI[1].SetActive(true);
             tutorial.getUI()[2].gameObject.SetActive(false);
             this.transform.position = levelManager.getLevels()[levelManager.getReachedLevel()].getRespawnPoint().transform.position;
             levelManager.getLevels()[levelManager.getReachedLevel()].gameObject.SetActive(true);
@@ -347,7 +353,7 @@ public class Player : MonoBehaviour
             case "Spike":
                 isDead = true;
                 animator.SetTrigger("isDead");
-                playerRespawn.Death();
+                GameEvents.current.PlayerDeathTrigger();
                 break;
             case "BounceUp":
                 Bounce(0);
@@ -370,7 +376,7 @@ public class Player : MonoBehaviour
                 break;
             case "Coin":
                 other.gameObject.SetActive(false);
-                scoreManager.AddScore();
+                GameEvents.current.DiamondTriggerEnter();
                 break;
             default:
                 break;
