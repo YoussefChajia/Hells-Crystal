@@ -2,36 +2,29 @@ using UnityEngine;
 
 public class PauseMenu : MonoBehaviour
 {
-    public static bool isPaused;
-
     [SerializeField] private GameObject pauseMenu;
 
-    private void Update()
+    private void OnEnable()
     {
-        if (Input.GetButtonDown("Fire2"))
-        {
-            if (!isPaused)
-            {
-                Pause();
-            }
-            else
-            {
-                Resume();
-            }
-        }
+        GameEvents.current.onPauseButtonClick += OnPauseMenuOpen;
+        GameEvents.current.onResumeButtonClick += OnPauseMenuClose;
     }
 
-    void Pause()
+    private void OnPauseMenuOpen()
     {
         pauseMenu.SetActive(true);
         Time.timeScale = 0f;
-        isPaused = true;
     }
 
-    void Resume()
+    private void OnPauseMenuClose()
     {
         pauseMenu.SetActive(false);
         Time.timeScale = 1f;
-        isPaused = false;
+    }
+
+    private void OnDisable()
+    {
+        GameEvents.current.onPauseButtonClick -= OnPauseMenuOpen;
+        GameEvents.current.onResumeButtonClick -= OnPauseMenuClose;
     }
 }

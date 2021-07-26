@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(PlayerController))]
 
@@ -40,8 +41,8 @@ public class Player : MonoBehaviour
     [Header("Slide Mechanic")]
     private bool isSliding;
 
-    [Header("Player Respawn")]
-    [SerializeField] private PlayerRespawn playerRespawn;
+    [Header("Player Death")]
+    [SerializeField] private PlayerDeath playerDeath;
 
     [Header("Level Manager")]
     [SerializeField] private LevelManager levelManager;
@@ -153,7 +154,7 @@ public class Player : MonoBehaviour
         }
 
 #if UNITY_EDITOR
-        if (Input.GetButtonDown("Fire1") && !isDead && !PauseMenu.isPaused)
+        if (Input.GetButtonDown("Fire1") && !isDead && !IsMouseOverUI())
         {
             startPosition = transform.position;
             //Enabling dash trail
@@ -172,7 +173,7 @@ public class Player : MonoBehaviour
                 dashDirection = false;
             }
         }
-        if (Input.GetButton("Fire1") && !isDead && !PauseMenu.isPaused)
+        if (Input.GetButton("Fire1") && !isDead && !IsMouseOverUI())
         {
             hold += Time.deltaTime;
             if (hold > holdTime && !isSliding)
@@ -180,7 +181,7 @@ public class Player : MonoBehaviour
                 isStop = true;
             }
         }
-        if (Input.GetButtonUp("Fire1") && !isDead && !PauseMenu.isPaused)
+        if (Input.GetButtonUp("Fire1") && !isDead && !IsMouseOverUI())
         {
             isStop = false;
             hold = 0f;
@@ -346,7 +347,7 @@ public class Player : MonoBehaviour
             case "Spike":
                 isDead = true;
                 animator.SetTrigger("isDead");
-                playerRespawn.Death();
+                playerDeath.Death();
                 break;
             case "BounceUp":
                 Bounce(0);
@@ -397,5 +398,10 @@ public class Player : MonoBehaviour
     {
         spike.setFromWayPointIndex(0);
         spike.setPercentWayPoints(0);
+    }
+
+    private bool IsMouseOverUI()
+    {
+        return EventSystem.current.IsPointerOverGameObject();
     }
 }
