@@ -25,7 +25,7 @@ public class ScoreManager : MonoBehaviour
 
     private void Start()
     {
-        GameEvents.current.onPlayerDeathTrigger += ResetScore;
+        GameEvents.current.onPlayerRespawnTrigger += ResetScore;
         GameEvents.current.onDiamondTriggerEnter += AddScore;
         scoreText.text = "Score : " + score.ToString();
     }
@@ -50,7 +50,7 @@ public class ScoreManager : MonoBehaviour
 
     private void OnDestroy()
     {
-        GameEvents.current.onPlayerDeathTrigger -= ResetScore;
+        GameEvents.current.onPlayerRespawnTrigger -= ResetScore;
         GameEvents.current.onDiamondTriggerEnter -= AddScore;
     }
 }

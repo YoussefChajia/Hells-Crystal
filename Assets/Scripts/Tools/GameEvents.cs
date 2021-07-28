@@ -40,6 +40,15 @@ public class GameEvents : MonoBehaviour
         }
     }
 
+    public event Action onPlayerRespawnTrigger;
+    public void PlayerRespawnTrigger()
+    {
+        if (onPlayerRespawnTrigger != null)
+        {
+            onPlayerRespawnTrigger();
+        }
+    }
+
     public event Action onDiamondTriggerEnter;
     public void DiamondTriggerEnter()
     {
