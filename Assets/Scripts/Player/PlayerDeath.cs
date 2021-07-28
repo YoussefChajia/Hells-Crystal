@@ -37,7 +37,6 @@ public class PlayerDeath : MonoBehaviour
 
     public void Respawn()
     {
-        GameEvents.current.PlayerRespawnTrigger();
         playerRevive.getReviveUI().SetActive(false);
         StartCoroutine("RespawnPlayer");
     }

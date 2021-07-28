@@ -26,6 +26,13 @@ public class Player : MonoBehaviour
     private bool dashDirection;
     private Vector2 startPosition;
 
+    [Header("Bounce Mechanic")]
+    [SerializeField] private float jumpSpeed;
+    [SerializeField] private float startJumpTime;
+    private float jumpTimer;
+    private bool isJumping;
+    private int direction;
+
     [Header("Stop Mechanic")]
     [SerializeField] private float holdTime;
     private float hold;
@@ -43,6 +50,9 @@ public class Player : MonoBehaviour
     [Header("Animator")]
     [SerializeField] private Animator animator;
 
+    [Header("Dragon")]
+    [SerializeField] private PlatformController tutSpike;
+
     [Header("Trail Effect")]
     [SerializeField] private TrailRenderer trail;
     [SerializeField] private SpriteRenderer sprite;
@@ -57,10 +67,6 @@ public class Player : MonoBehaviour
     [Header("Score Manager")]
     [SerializeField] private ScoreManager scoreManager;
 
-    public void setVelocity(Vector2 velocity)
-    {
-        this.velocity = velocity;
-    }
 
     public void setIsDead(bool isDead)
     {
@@ -100,16 +106,6 @@ public class Player : MonoBehaviour
     public GameObject[] getGameUI()
     {
         return this.gameUI;
-    }
-
-    public TrailRenderer getTrail()
-    {
-        return this.trail;
-    }
-
-    public SpriteRenderer getSprite()
-    {
-        return this.sprite;
     }
 
     private void Awake()
@@ -269,6 +265,11 @@ public class Player : MonoBehaviour
             Dash();
         }
 
+        if (isJumping)
+        {
+            Jump(direction);
+        }
+
         if (controller.collisions.right || controller.collisions.left)
         {
             //Disabling dash trail
@@ -318,7 +319,32 @@ public class Player : MonoBehaviour
         }
     }
 
-
+    void Jump(int direction)
+    {
+        if (jumpTimer <= 0)
+        {
+            isJumping = false;
+            velocity = Vector2.zero;
+        }
+        else
+        {
+            jumpTimer -= Time.fixedDeltaTime;
+            switch (direction)
+            {
+                case 0:
+                    velocity = new Vector2(0, jumpSpeed);
+                    break;
+                case 1:
+                    velocity = new Vector2(jumpSpeed, 0);
+                    break;
+                case -1:
+                    velocity = new Vector2(-jumpSpeed, 0);
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
 
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -328,6 +354,19 @@ public class Player : MonoBehaviour
                 isDead = true;
                 animator.SetTrigger("isDead");
                 GameEvents.current.PlayerDeathTrigger();
+                break;
+            case "BounceUp":
+                Bounce(0);
+                break;
+            case "BounceRight":
+                Bounce(1);
+                break;
+            case "BounceLeft":
+                Bounce(-1);
+                break;
+            case "Hold":
+                //This method reset the tutorial spike at the beginning
+                ResetSpike(tutSpike);
                 break;
             case "Checkpoint":
                 levelManager.ActivateLevel(other.GetComponent<CheckPoint>());
@@ -350,6 +389,21 @@ public class Player : MonoBehaviour
         {
             isSliding = false;
         }
+    }
+
+    void Bounce(int bounce)
+    {
+        trail.enabled = true;
+        sprite.enabled = false;
+        jumpTimer = startJumpTime;
+        isJumping = true;
+        direction = bounce;
+    }
+
+    void ResetSpike(PlatformController spike)
+    {
+        spike.setFromWayPointIndex(0);
+        spike.setPercentWayPoints(0);
     }
 
     private bool IsMouseOverUI()

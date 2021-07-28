@@ -12,6 +12,7 @@ TagManager:
   - BounceLeft
   - Slide
   - Coin
+  - Hold
   layers:
   - Default
   - TransparentFX
