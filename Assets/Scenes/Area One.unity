@@ -7420,6 +7420,26 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8071493737462402460, guid: 5b0f28619147215438922faef03fd68b, type: 3}
   m_PrefabInstance: {fileID: 727194852}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &733238495 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 775256463656571140, guid: 680442539a3fb5342b860aa8ffe3293e, type: 3}
+  m_PrefabInstance: {fileID: 1438927942}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &733238499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 733238495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25da52b6a26f9e545b47f893c6c180cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpSpeed: 20
+  startJumpTime: 0.2
+  direction: 1
 --- !u!1001 &734730971
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11189,6 +11209,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d05dd2200213a54f8ae9c07a3542325, type: 3}
+--- !u!1 &1055214416 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6474524421972475673, guid: 680442539a3fb5342b860aa8ffe3293e, type: 3}
+  m_PrefabInstance: {fileID: 1438927942}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1055214420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1055214416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25da52b6a26f9e545b47f893c6c180cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpSpeed: 20
+  startJumpTime: 0.2
+  direction: 0
 --- !u!1 &1070651460
 GameObject:
   m_ObjectHideFlags: 0
@@ -17868,9 +17908,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1738835162}
   - component: {fileID: 1738835161}
+  - component: {fileID: 1738835163}
   m_Layer: 0
   m_Name: Turorial
-  m_TagString: Hold
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -17915,6 +17956,19 @@ Transform:
   m_Father: {fileID: 304820699}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1738835163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1738835160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6168b790026d13b4982eaa6c2ef05daa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dragon: {fileID: 192828881092968988}
 --- !u!1001 &1744811420
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20192,13 +20246,10 @@ MonoBehaviour:
   dashSpeed: 30
   dashDistance: 3
   isDashing: 0
-  jumpSpeed: 16
-  startJumpTime: 0.2
   holdTime: 0.1
   playerRespawn: {fileID: 1392825940}
   levelManager: {fileID: 99461062}
   animator: {fileID: 2023183555}
-  tutSpike: {fileID: 192828881092968988}
   trail: {fileID: 2023183556}
   sprite: {fileID: 2023183551}
   tutorial: {fileID: 766755926}
