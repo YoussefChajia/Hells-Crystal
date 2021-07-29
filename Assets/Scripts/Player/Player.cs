@@ -63,6 +63,7 @@ public class Player : MonoBehaviour
 
     [Header("Game UI")]
     [SerializeField] private GameObject[] gameUI;
+    private bool isPaused;
 
     [Header("Score Manager")]
     [SerializeField] private ScoreManager scoreManager;
@@ -81,6 +82,16 @@ public class Player : MonoBehaviour
     public bool getIsDead()
     {
         return this.isDead;
+    }
+
+    public void setIsPaused(bool isPaused)
+    {
+        this.isPaused = isPaused;
+    }
+
+    public bool getIsPaused()
+    {
+        return this.isPaused;
     }
 
     public LevelManager getLevelManager()
@@ -160,7 +171,7 @@ public class Player : MonoBehaviour
         }
 
 #if UNITY_EDITOR
-        if (Input.GetButtonDown("Fire1") && !isDead && !IsMouseOverUI())
+        if (Input.GetButtonDown("Fire1") && !isDead && !IsMouseOverUI() && !isPaused)
         {
             startPosition = transform.position;
             //Enabling dash trail
@@ -179,7 +190,7 @@ public class Player : MonoBehaviour
                 dashDirection = false;
             }
         }
-        if (Input.GetButton("Fire1") && !isDead && !IsMouseOverUI())
+        if (Input.GetButton("Fire1") && !isDead && !IsMouseOverUI() && !isPaused)
         {
             hold += Time.deltaTime;
             if (hold > holdTime && !isSliding)
@@ -187,13 +198,13 @@ public class Player : MonoBehaviour
                 isStop = true;
             }
         }
-        if (Input.GetButtonUp("Fire1") && !isDead && !IsMouseOverUI())
+        if (Input.GetButtonUp("Fire1") && !isDead && !IsMouseOverUI() && !isPaused)
         {
             isStop = false;
             hold = 0f;
         }
 #else
-        if (Input.touchCount > 0  && !isDead)
+        if (Input.touchCount > 0  && !isDead && IsTouchOverUI(Input.GetTouch(0)) && !isPaused)
         {
             Touch touch = Input.GetTouch(0);
             if (touch.phase == TouchPhase.Began)
@@ -409,5 +420,10 @@ public class Player : MonoBehaviour
     private bool IsMouseOverUI()
     {
         return EventSystem.current.IsPointerOverGameObject();
+    }
+
+    private bool IsTouchOverUI(Touch touch)
+    {
+        return EventSystem.current.IsPointerOverGameObject(touch.fingerId);
     }
 }
