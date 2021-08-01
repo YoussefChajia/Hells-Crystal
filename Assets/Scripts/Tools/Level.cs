@@ -13,6 +13,7 @@ public class Level : MonoBehaviour
     [SerializeField] private GameObject[] diamonds;
 
     [SerializeField] private GameObject respawnPoint;
+    [SerializeField] private GameObject checkPoint;
 
     public GameObject[] getSpikes()
     {
@@ -37,6 +38,11 @@ public class Level : MonoBehaviour
     public GameObject getRespawnPoint()
     {
         return this.respawnPoint;
+    }
+
+    public GameObject getCheckPoint()
+    {
+        return this.checkPoint;
     }
 
 

@@ -133,29 +133,13 @@ public class Player : MonoBehaviour
             this.levelManager.setReachedLevel(data.getLevel());
             this.scoreManager.setDiamonds(data.getDiamonds());
         }
+
+        LevelSetUp();
     }
 
     void Start()
     {
         controller = GetComponent<PlayerController>();
-
-        //Disabling all the levels, to activate them one at a time with the ActivateLevel method below
-        foreach (Level level in levelManager.getLevels())
-        {
-            level.gameObject.SetActive(false);
-        }
-
-        if (PlayerPrefs.GetInt("Tutorial", 0) == 1)
-        {
-            gameUI[0].SetActive(true);
-            gameUI[1].SetActive(true);
-            tutorial.getUI()[2].gameObject.SetActive(false);
-            this.transform.position = levelManager.getLevels()[levelManager.getReachedLevel()].getRespawnPoint().transform.position;
-            levelManager.getLevels()[levelManager.getReachedLevel()].gameObject.SetActive(true);
-            levelManager.setActiveLevel(levelManager.getLevels()[levelManager.getReachedLevel()]);
-            levelManager.getActiveLevel().InitializeLevel();
-            //PlayerPrefs.SetInt("Tutorial", 0);
-        }
     }
 
     void Update()
@@ -415,6 +399,27 @@ public class Player : MonoBehaviour
     {
         spike.setFromWayPointIndex(0);
         spike.setPercentWayPoints(0);
+    }
+
+    private void LevelSetUp()
+    {
+        //Disabling all the levels, to activate them one at a time with the ActivateLevel method below
+        foreach (Level level in levelManager.getLevels())
+        {
+            level.gameObject.SetActive(false);
+        }
+
+        if (PlayerPrefs.GetInt("Tutorial", 0) == 1)
+        {
+            gameUI[0].SetActive(true);
+            gameUI[1].SetActive(true);
+            tutorial.getUI()[2].gameObject.SetActive(false);
+            this.transform.position = levelManager.getLevels()[levelManager.getReachedLevel()].getRespawnPoint().transform.position;
+            levelManager.getLevels()[levelManager.getReachedLevel()].gameObject.SetActive(true);
+            levelManager.setActiveLevel(levelManager.getLevels()[levelManager.getReachedLevel()]);
+            levelManager.getActiveLevel().InitializeLevel();
+            //PlayerPrefs.SetInt("Tutorial", 0);
+        }
     }
 
     private bool IsMouseOverUI()
