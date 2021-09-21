@@ -224,6 +224,14 @@ public class Player : MonoBehaviour
         }
 #endif
 
+        // This if statment was in FixedUpdate, if any problem occurs return it there
+        if (controller.collisions.right || controller.collisions.left)
+        {
+            //Disabling dash trail
+            trail.enabled = false;
+            sprite.enabled = true;
+        }
+
         if (velocity.y == 0)
         {
             animator.SetBool("isClimbing", false);
@@ -263,13 +271,6 @@ public class Player : MonoBehaviour
         if (isJumping)
         {
             Jump(direction);
-        }
-
-        if (controller.collisions.right || controller.collisions.left)
-        {
-            //Disabling dash trail
-            trail.enabled = false;
-            sprite.enabled = true;
         }
 
         controller.Move(velocity * Time.fixedDeltaTime);
