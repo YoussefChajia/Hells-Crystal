@@ -1,10 +1,15 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
 {
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject pauseButton;
     [SerializeField] private GameObject resumeButton;
+
+    [SerializeField] private GameObject[] tabs;
+    [SerializeField] private Image[] panels;
 
     private void Start()
     {
@@ -29,6 +34,18 @@ public class PauseMenu : MonoBehaviour
         resumeButton.SetActive(false);
         Time.timeScale = 1f;
         Player.instance.setIsPaused(false);
+        onButtonClick(0);
+    }
+
+    public void onButtonClick(int index)
+    {
+        foreach (var item in tabs)
+            item.SetActive(false);
+        foreach (var item in panels)
+            item.color = Color.grey;
+
+        tabs[index].SetActive(true);
+        panels[index].color = Color.white;
     }
 
     private void OnDestroy()
