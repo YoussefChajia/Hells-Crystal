@@ -6,10 +6,12 @@ public class PauseMenu : MonoBehaviour
 {
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject pauseButton;
+    [SerializeField] private GameObject scoreText;
     [SerializeField] private GameObject resumeButton;
 
     [SerializeField] private GameObject[] tabs;
     [SerializeField] private Image[] panels;
+    [SerializeField] private Text[] texts;
 
     private void Start()
     {
@@ -22,6 +24,7 @@ public class PauseMenu : MonoBehaviour
     {
         pauseMenu.SetActive(true);
         pauseButton.SetActive(false);
+        scoreText.SetActive(false);
         resumeButton.SetActive(true);
         Time.timeScale = 0f;
         Player.instance.setIsPaused(true);
@@ -31,6 +34,7 @@ public class PauseMenu : MonoBehaviour
     {
         pauseMenu.SetActive(false);
         pauseButton.SetActive(true);
+        scoreText.SetActive(true);
         resumeButton.SetActive(false);
         Time.timeScale = 1f;
         Player.instance.setIsPaused(false);
@@ -44,8 +48,12 @@ public class PauseMenu : MonoBehaviour
         foreach (var item in panels)
             item.color = Color.grey;
 
+        foreach (var item in texts)
+            item.color = Color.grey;
+
         tabs[index].SetActive(true);
         panels[index].color = Color.white;
+        texts[index].color = Color.white;
     }
 
     private void OnDestroy()

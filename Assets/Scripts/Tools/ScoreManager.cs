@@ -27,20 +27,20 @@ public class ScoreManager : MonoBehaviour
     {
         GameEvents.current.onPlayerRespawnTrigger += ResetScore;
         GameEvents.current.onDiamondTriggerEnter += AddScore;
-        scoreText.text = "Score : " + score.ToString();
+        scoreText.text = score.ToString();
     }
 
     private void AddScore()
     {
         score += 1;
         diamonds += 1;
-        scoreText.text = "Score : " + score.ToString();
+        scoreText.text = score.ToString();
     }
 
     private void ResetScore()
     {
         score = 0;
-        scoreText.text = "Score : " + score.ToString();
+        scoreText.text = score.ToString();
     }
 
     private void OnApplicationQuit()
