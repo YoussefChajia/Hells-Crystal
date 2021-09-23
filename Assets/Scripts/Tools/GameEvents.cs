@@ -57,4 +57,22 @@ public class GameEvents : MonoBehaviour
             onDiamondTriggerEnter();
         }
     }
+
+    public event Action onPlayerLevelFinish;
+    public void PlayerLevelFinish()
+    {
+        if (onPlayerLevelFinish != null)
+        {
+            onPlayerLevelFinish();
+        }
+    }
+
+    public event Action onPlayerQuitGame;
+    public void PlayerQuitGame()
+    {
+        if (onPlayerQuitGame != null)
+        {
+            onPlayerQuitGame();
+        }
+    }
 }

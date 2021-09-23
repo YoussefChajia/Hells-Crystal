@@ -188,7 +188,7 @@ public class Player : MonoBehaviour
             hold = 0f;
         }
 #else
-        if (Input.touchCount > 0  && !isDead && IsTouchOverUI(Input.GetTouch(0)) && !isPaused)
+        if (Input.touchCount > 0  && !isDead && !IsTouchOverUI(Input.GetTouch(0)) && !isPaused)
         {
             Touch touch = Input.GetTouch(0);
             if (touch.phase == TouchPhase.Began)

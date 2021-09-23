@@ -1,14 +1,14 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
 {
+    [Header("Magic")]
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject pauseButton;
     [SerializeField] private GameObject scoreText;
-    [SerializeField] private GameObject resumeButton;
 
+    [Header("Selection")]
     [SerializeField] private GameObject[] tabs;
     [SerializeField] private Image[] panels;
     [SerializeField] private Text[] texts;
@@ -25,7 +25,6 @@ public class PauseMenu : MonoBehaviour
         pauseMenu.SetActive(true);
         pauseButton.SetActive(false);
         scoreText.SetActive(false);
-        resumeButton.SetActive(true);
         Time.timeScale = 0f;
         Player.instance.setIsPaused(true);
     }
@@ -35,7 +34,6 @@ public class PauseMenu : MonoBehaviour
         pauseMenu.SetActive(false);
         pauseButton.SetActive(true);
         scoreText.SetActive(true);
-        resumeButton.SetActive(false);
         Time.timeScale = 1f;
         Player.instance.setIsPaused(false);
         onButtonClick(0);

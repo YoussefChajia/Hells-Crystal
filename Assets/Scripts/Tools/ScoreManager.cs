@@ -3,7 +3,11 @@ using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour
 {
-    [SerializeField] private Text scoreText;
+    [SerializeField] private Text levelScore;
+    [SerializeField] private Text currentLevel;
+    [SerializeField] private Text levelCompletion;
+    [SerializeField] private Text totalScore;
+    [SerializeField] private ProgressBar progress;
 
     private int score;
     private int diamonds;
@@ -27,20 +31,33 @@ public class ScoreManager : MonoBehaviour
     {
         GameEvents.current.onPlayerRespawnTrigger += ResetScore;
         GameEvents.current.onDiamondTriggerEnter += AddScore;
-        scoreText.text = score.ToString();
+        GameEvents.current.onPlayerQuitGame += QuitGame;
+    }
+
+    private void Update()
+    {
+        levelScore.text = score.ToString();
+        currentLevel.text = "Current Level : " + Player.instance.getLevelManager().getActiveLevel().getlevelName();
+        levelCompletion.text = "Level Completion : " + progress.getCompletion().ToString() + "%";
+        totalScore.text = "Total Diamonds : " + diamonds.ToString();
     }
 
     private void AddScore()
     {
         score += 1;
         diamonds += 1;
-        scoreText.text = score.ToString();
+        levelScore.text = score.ToString();
     }
 
     private void ResetScore()
     {
         score = 0;
-        scoreText.text = score.ToString();
+        levelScore.text = score.ToString();
+    }
+
+    private void QuitGame()
+    {
+        Application.Quit();
     }
 
     private void OnApplicationQuit()
@@ -52,5 +69,7 @@ public class ScoreManager : MonoBehaviour
     {
         GameEvents.current.onPlayerRespawnTrigger -= ResetScore;
         GameEvents.current.onDiamondTriggerEnter -= AddScore;
+        GameEvents.current.onPlayerQuitGame -= QuitGame;
+        SaveSystem.SaveData(Player.instance);
     }
 }

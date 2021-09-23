@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class Level : MonoBehaviour
 {
+    [SerializeField] private string levelName;
+
     [SerializeField] private GameObject spikesParent;
     [SerializeField] private GameObject blocksParent;
     [SerializeField] private GameObject mechanicsParent;
@@ -14,6 +16,11 @@ public class Level : MonoBehaviour
 
     [SerializeField] private GameObject respawnPoint;
     [SerializeField] private GameObject checkPoint;
+
+    public string getlevelName()
+    {
+        return this.levelName;
+    }
 
     public GameObject[] getSpikes()
     {
