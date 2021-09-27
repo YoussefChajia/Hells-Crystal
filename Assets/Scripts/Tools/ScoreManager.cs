@@ -60,6 +60,12 @@ public class ScoreManager : MonoBehaviour
         Application.Quit();
     }
 
+    private void OnApplicationPause(bool pauseStatus)
+    {
+        if (pauseStatus)
+            SaveSystem.SaveData(Player.instance);
+    }
+
     private void OnApplicationQuit()
     {
         SaveSystem.SaveData(Player.instance);
@@ -70,6 +76,5 @@ public class ScoreManager : MonoBehaviour
         GameEvents.current.onPlayerRespawnTrigger -= ResetScore;
         GameEvents.current.onDiamondTriggerEnter -= AddScore;
         GameEvents.current.onPlayerQuitGame -= QuitGame;
-        SaveSystem.SaveData(Player.instance);
     }
 }

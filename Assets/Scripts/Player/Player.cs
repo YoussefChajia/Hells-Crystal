@@ -21,7 +21,6 @@ public class Player : MonoBehaviour
 
     [Header("Dash Move")]
     [SerializeField] private float dashSpeed;
-    [SerializeField] private float dashDistance;
     [SerializeField] private bool isDashing;
     private bool dashDirection;
     private Vector2 startPosition;
@@ -63,7 +62,6 @@ public class Player : MonoBehaviour
 
     [Header("Game UI")]
     [SerializeField] private GameObject[] gameUI;
-    private bool isPaused;
 
     [Header("Score Manager")]
     [SerializeField] private ScoreManager scoreManager;
@@ -82,16 +80,6 @@ public class Player : MonoBehaviour
     public bool getIsDead()
     {
         return this.isDead;
-    }
-
-    public void setIsPaused(bool isPaused)
-    {
-        this.isPaused = isPaused;
-    }
-
-    public bool getIsPaused()
-    {
-        return this.isPaused;
     }
 
     public LevelManager getLevelManager()
@@ -155,11 +143,11 @@ public class Player : MonoBehaviour
         }
 
 #if UNITY_EDITOR
-        if (Input.GetButtonDown("Fire1") && !isDead && !IsMouseOverUI() && !isPaused)
+        if (Input.GetButtonDown("Fire1") && !isDead && !IsMouseOverUI())
         {
             startPosition = transform.position;
             //Enabling dash trail
-            trail.enabled = true;
+            trail.emitting = true;
             sprite.enabled = false;
             isDashing = true;
             //animator.SetBool("isDashing", true);
@@ -174,7 +162,7 @@ public class Player : MonoBehaviour
                 dashDirection = false;
             }
         }
-        if (Input.GetButton("Fire1") && !isDead && !IsMouseOverUI() && !isPaused)
+        if (Input.GetButton("Fire1") && !isDead && !IsMouseOverUI())
         {
             hold += Time.deltaTime;
             if (hold > holdTime && !isSliding)
@@ -182,22 +170,21 @@ public class Player : MonoBehaviour
                 isStop = true;
             }
         }
-        if (Input.GetButtonUp("Fire1") && !isDead && !IsMouseOverUI() && !isPaused)
+        if (Input.GetButtonUp("Fire1") && !isDead && !IsMouseOverUI())
         {
             isStop = false;
             hold = 0f;
         }
 #else
-        if (Input.touchCount > 0  && !isDead && !IsTouchOverUI(Input.GetTouch(0)) && !isPaused)
+        if (Input.touchCount > 0  && !isDead && !IsTouchOverUI(Input.GetTouch(0)))
         {
             Touch touch = Input.GetTouch(0);
             if (touch.phase == TouchPhase.Began)
             {
                 startPosition = transform.position;
-                trail.enabled = true;
+                trail.emitting = true;
                 sprite.enabled = false;
                 isDashing = true;
-                //animator.SetBool("isDashing", true);
 
                 if (transform.position.x < -1.2f)
                 {
@@ -228,7 +215,7 @@ public class Player : MonoBehaviour
         if (controller.collisions.right || controller.collisions.left)
         {
             //Disabling dash trail
-            trail.enabled = false;
+            trail.emitting = false;
             sprite.enabled = true;
         }
 
@@ -278,12 +265,12 @@ public class Player : MonoBehaviour
 
     void Dash()
     {
-        if (Mathf.Abs((startPosition.x - transform.position.x)) >= dashDistance || controller.collisions.right || controller.collisions.left)
+        if (controller.collisions.right || controller.collisions.left)
         {
             isDashing = false;
             velocity = Vector2.zero;
             //Disabling dash trail
-            trail.enabled = false;
+            trail.emitting = false;
             sprite.enabled = true;
             //animator.SetBool("isDashing", false);
         }
@@ -430,6 +417,7 @@ public class Player : MonoBehaviour
 
     private bool IsTouchOverUI(Touch touch)
     {
-        return EventSystem.current.IsPointerOverGameObject(touch.fingerId);
+        if (touch.phase == TouchPhase.Began && EventSystem.current.IsPointerOverGameObject(touch.fingerId)) return true;
+        return false;
     }
 }
