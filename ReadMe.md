@@ -4,20 +4,22 @@ Hell's Crystal is an exciting 2D mobile game currently in development. In this g
 
 As you progress through each level, you'll encounter a series of thrilling obstacles that test your agility and quick thinking. Your primary objective is to collect the valuable crystals scattered throughout each level. These crystals are essential to appease the guardian at the end of each stage, granting you permission to advance to the next level of hell.
 
-Hell's Crystal offers an immersive gameplay experience with intuitive touch controls, allowing you to perform precise and dynamic movements as you navigate through the treacherous environments. The game features stunning 2D graphics, captivating sound effects, and an engaging storyline that keeps you hooked throughout your journey.
+Hell's Crystal offers an immersive gameplay experience with intuitive touch controls, allowing you to perform precise and dynamic movements as you navigate through treacherous environments. The game features stunning 2D graphics, captivating sound effects, and an engaging storyline that keeps you hooked throughout your journey.
 
 Prepare yourself for an adrenaline-pumping challenge as you dash, climb, and strategically maneuver your way through hell's treacherous towers. Can you collect all the crystals, overcome the obstacles, and ultimately escape the clutches of hell?
 
 Note: Hell's Crystal is currently in development, and more features and content will be added in future updates. Stay tuned for more thrilling updates!
 
-
-## Screenshots and Video
-
-
-
 ## Features
 
-    
+| ![GIF 1](https://github.com/YoussefChajia/Hells-Crystal/blob/main/Media/Hell's%20Crystal%20Portal.gif) | ![GIF 2](https://github.com/YoussefChajia/Hells-Crystal/blob/main/Media/Hell's%20Crystal%20Launch.gif) | ![GIF 3](https://github.com/YoussefChajia/Hells-Crystal/blob/main/Media/Hell's%20Crystal%20Slide.gif) | ![GIF 4](https://github.com/YoussefChajia/Hells-Crystal/blob/main/Media/Hell's%20Crystal%20Death.gif) |
+|---|---|---|---|
+
+## Videos
+
+| Tutorial | Gameplay |
+|----------|----------|
+| [![Tutorial Video](https://img.youtube.com/vi/ZDB6jP5axO4/0.jpg)](https://www.youtube.com/shorts/ZDB6jP5axO4) | [![Gameplay Video](https://img.youtube.com/vi/vykRQKEMV_c/0.jpg)](https://www.youtube.com/watch?v=vykRQKEMV_c) |
 
 ## Installation
 
