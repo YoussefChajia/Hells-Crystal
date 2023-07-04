@@ -406,6 +406,8 @@ public class Player : MonoBehaviour
             levelManager.getLevels()[levelManager.getReachedLevel()].gameObject.SetActive(true);
             levelManager.setActiveLevel(levelManager.getLevels()[levelManager.getReachedLevel()]);
             levelManager.getActiveLevel().InitializeLevel();
+
+            //PlayerPrefs.DeleteAll();
             //PlayerPrefs.SetInt("Tutorial", 0);
         }
     }

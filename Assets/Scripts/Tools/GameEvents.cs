@@ -75,4 +75,13 @@ public class GameEvents : MonoBehaviour
             onPlayerQuitGame();
         }
     }
+
+    public event Action onPlayerResetGame; 
+    public void PlayerResetGame()
+    {
+        if (onPlayerResetGame != null)
+        {
+            onPlayerResetGame();
+        }
+    }
 }
